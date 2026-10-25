@@ -1,6 +1,6 @@
 # Calculadora de Máscaras de Sub-rede IPv4 — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · **Português** · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · **Português** · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **Branch `Linux`**: versão Linux do software. A branch `main` é reservada à distribuição Windows; não mescle uma na outra.
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (branch Linux)
 ├── calculateur-masques.desktop # Entrada de menu para ambientes de desktop
 ├── INSTALLER.md                # Instruções de instalação detalhadas (em francês)
 ├── LICENSE                     # Licença MIT
-├── README.md                   # Este guia, em francês
-└── README.<code>.md            # Traduções: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # Este guia, em francês
+└── docs/README-LINUX.<code>.md # Traduções: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

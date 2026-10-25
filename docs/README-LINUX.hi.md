@@ -1,6 +1,6 @@
 # IPv4 सबनेट मास्क कैलकुलेटर — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · **हिन्दी** · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · **हिन्दी** · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **`Linux` शाखा**: सॉफ़्टवेयर का Linux संस्करण। `main` शाखा केवल Windows वितरण के लिए आरक्षित है; एक को दूसरी में मर्ज न करें।
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (Linux शाखा)
 ├── calculateur-masques.desktop # डेस्कटॉप एनवायरनमेंट के लिए मेनू प्रविष्टि
 ├── INSTALLER.md                # विस्तृत स्थापना निर्देश (फ़्रेंच में)
 ├── LICENSE                     # MIT लाइसेंस
-├── README.md                   # यह मार्गदर्शिका, फ़्रेंच में
-└── README.<code>.md            # अनुवाद: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # यह मार्गदर्शिका, फ़्रेंच में
+└── docs/README-LINUX.<code>.md # अनुवाद: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

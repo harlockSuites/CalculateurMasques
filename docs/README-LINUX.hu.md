@@ -1,6 +1,6 @@
 # IPv4 Alhálózati Maszk Kalkulátor — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · **Magyar** · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · **Magyar** · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **`Linux` ág**: a szoftver Linux-verziója. A `main` ág a Windows-terjesztésnek van fenntartva; ne egyesítse az egyiket a másikkal.
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (Linux ág)
 ├── calculateur-masques.desktop # Menübejegyzés asztali környezetekhez
 ├── INSTALLER.md                # Részletes telepítési útmutató (franciául)
 ├── LICENSE                     # MIT licenc
-├── README.md                   # Ez az útmutató, franciául
-└── README.<code>.md            # Fordítások: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # Ez az útmutató, franciául
+└── docs/README-LINUX.<code>.md # Fordítások: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

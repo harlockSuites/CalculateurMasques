@@ -1,6 +1,6 @@
 # IPv4 Калкулатор Мрежних Маски — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · **Српски** · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · **Српски** · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **Грана `Linux`**: Linux верзија програма. Грана `main` је резервисана за Windows дистрибуцију; не спајати једну са другом.
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (грана Linux)
 ├── calculateur-masques.desktop # Ставка менија за desktop окружења
 ├── INSTALLER.md                # Детаљна упутства за инсталацију (на француском)
 ├── LICENSE                     # MIT лиценца
-├── README.md                   # Овај водич, на француском
-└── README.<code>.md            # Преводи: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # Овај водич, на француском
+└── docs/README-LINUX.<code>.md # Преводи: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

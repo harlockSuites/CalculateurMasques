@@ -1,0 +1,149 @@
+# IPv4 サブネットマスク計算機
+
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · **日本語** · [Filipino](README.fil.md)
+
+**オフライン**で使える無料のオープンソースのグラフィカルユーティリティです。IPv4 サブネットマスクの計算、ネットワークのサブネットへの分割、履歴の保存とエクスポートができます。インターフェースは **15 言語**に対応しています。
+
+リポジトリ：<https://github.com/harlockSuites/CalculateurMasques>
+
+> **Linux:** Linux 専用版は [`Linux` ブランチ](https://github.com/harlockSuites/CalculateurMasques/tree/Linux)で提供しています。ビルド済みの実行ファイル（プレリリース、Debian 12、x86-64）は [`Linux-v1.0` リリース](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0)で公開しています。この README は Windows 版について説明しています。
+
+---
+
+## 概要
+
+アプリケーションは 3 つのタブで構成されています。
+
+| タブ | 内容 |
+|---|---|
+| **計算機** | メインの計算、IP アドレスの変換、所属確認 |
+| **サブネット分割** | ネットワークのサブネットへの自動分割 |
+| **履歴** | 計算の記録、CSV / TXT へのエクスポート |
+
+---
+
+## 機能
+
+### 計算機タブ
+- **CIDR プレフィックス**（`/24`）または**ドット付き 10 進マスク**（`255.255.255.0`）で入力できます。両者は自動的に同期されます
+- 表示される結果：
+  - ネットワークアドレス
+  - サブネットマスク
+  - CIDR表記
+  - ワイルドカードマスク
+  - 最初のホストアドレス / 最後のホストアドレス
+  - ブロードキャストアドレス
+  - 使用可能なホスト数
+  - ネットワーク全範囲
+- 入力した IP アドレスの**変換**：ドット付き10進表記、2進数、16進数、10進数（32ビット整数）
+- **所属確認**：指定した IP が計算されたネットワークに属しているかをテストします
+- 任意の値を**右クリック**してクリップボードにコピーできます
+- **Enter** キーで計算を実行します
+
+### サブネット分割タブ
+- ネットワークを N 個の同じ大きさのサブネットに分割します
+- または、N 台のホストを収容できる最小の CIDR を求めます
+- ネットワーク、マスク、ホスト数、ブロードキャストを示すサブネットの表（最大 65,536 行。それを超える場合は、選択した言語でメッセージが表示されます）
+- セルを右クリックすると値をコピーできます
+
+### 履歴タブ
+- すべての計算が、計算時刻とともに自動的に記録されます
+- エントリをダブルクリックすると、計算機に再読み込みされます
+- **CSV** 出力（BOM 付き UTF-8、Excel 対応）
+- **TXT** 出力（読みやすい形式）
+
+### 言語セレクター
+アプリケーションのヘッダーから、15 言語を選択できます。
+
+| グループ | 言語 |
+|---|---|
+| ロマンス諸語 | Français · English · Español · Português · Italiano |
+| 中欧・東欧 | Српски · Polski · Magyar · Русский |
+| 南アジア・東アジア | हिन्दी · 中文 · Tiếng Việt · 한국어 · 日本語 · Filipino |
+
+言語の切り替えは即座に反映され、再起動は不要です。
+
+### このソフトについてボタン
+言語セレクターの横にある**このソフトについて**ボタンを押すと、作者のバナー（`banner.png`）と、15 言語に翻訳されたメッセージ「このオフラインのユーティリティソフトは無料で、オープンソースです。」を表示するウィンドウが開きます。
+
+---
+
+## 動作環境
+
+- **Windows 10 / 11**
+- **Python 3.8+** — [python.org](https://www.python.org/downloads/)
+- `tkinter` モジュール（Python の標準インストールに含まれています）
+
+スクリプトの実行に外部依存パッケージは必要ありません。[Pillow](https://pypi.org/project/pillow/) はオプションで、ウィンドウアイコンをフル解像度で表示するためだけに使用します。
+
+---
+
+## 起動方法
+
+### Python から起動
+```
+python calculateur_masques.py
+```
+
+### コンパイル済みの実行ファイルから起動
+`dist\CalculateurMasquesIPv4.exe` をダブルクリックします。実行ファイルは単体で動作し、インストールは不要です。このリポジトリにはバージョン管理されていないため、ビルドしてください（下記参照）。
+
+---
+
+## 実行ファイルのビルド
+
+このリポジトリには、アイコン、バナー、翻訳を組み込む PyInstaller の spec ファイル（`CalculateurMasquesIPv4.spec`）が含まれています。このフォルダーで次を実行します。
+
+```
+pip install pyinstaller pillow
+python -m PyInstaller --clean --noconfirm CalculateurMasquesIPv4.spec
+```
+
+実行ファイルは `dist\` フォルダーに生成されます。アイコン（`icon.ico`）は exe に組み込まれます。
+
+---
+
+## ファイル構成
+
+```
+CalculateurMasques\
+├── calculateur_masques.py        # メインアプリケーション
+├── translations.py               # 15 言語の辞書
+├── CalculateurMasquesIPv4.spec   # PyInstaller の仕様ファイル
+├── icon.ico                      # exe のアイコン（Windows）
+├── icon.png                      # ウィンドウアイコン（512 px）
+├── banner.png                    # このソフトについてウィンドウのバナー（600 px）
+├── LICENSE                       # MIT ライセンス
+└── README.md
+```
+
+---
+
+## 特殊なケースへの対応
+
+| プレフィックス | 動作 |
+|---|---|
+| `/31` | ポイントツーポイントリンク（RFC 3021）— 2 アドレス、通常のブロードキャストなし |
+| `/32` | 単一ホスト — 最初 = 最後 = ネットワークアドレス |
+| `/0` | ユニバーサルネットワーク `0.0.0.0` |
+
+---
+
+## ウイルス対策ソフトと誤検知
+
+2026年10月25日時点で、VirusTotal はバージョン 1.0 の実行ファイル `CalculateurMasquesIPv4.exe` について、**69 エンジン中 5 件の検出**を報告しています（Arctic Wolf、Bkav Pro、Microsoft、SecureAge、Zillya）。これは**誤検知**であると考えています。PyInstaller でパッケージ化された、新しく電子署名のない Python プログラムでは、よくあることです。このプログラムにはネットワーク関連のコードは一切含まれておらず（使用しているのは `tkinter`、`ipaddress`、`csv`、`datetime`、`math`、`sys`、`os` のみで、ウィンドウアイコン用に Pillow を使っています）、ソースコードはすべてこのリポジトリで公開されています。
+
+2026年10月25日に、該当する 5 社へ誤検知の報告を送信しました。このセクションは、各社からの回答に応じて更新します。
+
+ダウンロードしたファイルを確認するには：
+
+- SHA-256 (v1.0)：`6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- VirusTotal レポート：<https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- SHA-256 (v1.1)：`bddbfc4ce674cffa78f0a18cb7e9554d2f2fe3ced46cd1cfb99ae907e9001d65`
+- ソースコードから自分で実行ファイルをビルドすることもできます（「実行ファイルのビルド」を参照）。
+
+---
+
+## ライセンス
+
+[MIT](../LICENSE) ライセンスの下で配布されています — © 2026 Harlock S.

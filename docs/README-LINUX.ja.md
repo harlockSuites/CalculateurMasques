@@ -1,6 +1,6 @@
 # IPv4 サブネットマスク計算機 — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · **日本語** · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · **日本語** · [Filipino](README-LINUX.fil.md)
 
 > **`Linux` ブランチ**：ソフトウェアの Linux 版です。`main` ブランチは Windows 向け配布専用です。どちらか一方をもう一方にマージしないでください。
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (Linux ブランチ)
 ├── calculateur-masques.desktop # デスクトップ環境向けのメニューエントリ
 ├── INSTALLER.md                # 詳細なインストール手順（フランス語）
 ├── LICENSE                     # MIT ライセンス
-├── README.md                   # このガイド（フランス語）
-└── README.<code>.md            # 翻訳：en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # このガイド（フランス語）
+└── docs/README-LINUX.<code>.md # 翻訳：en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

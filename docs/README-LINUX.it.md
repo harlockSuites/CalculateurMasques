@@ -1,6 +1,6 @@
 # Calcolatore di Maschere di Sottorete IPv4 — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · **Italiano** · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · **Italiano** · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **Ramo `Linux`**: versione Linux del software. Il ramo `main` è riservato alla distribuzione Windows; non unire l'uno all'altro.
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (ramo Linux)
 ├── calculateur-masques.desktop # Voce di menu per gli ambienti desktop
 ├── INSTALLER.md                # Istruzioni di installazione dettagliate (in francese)
 ├── LICENSE                     # Licenza MIT
-├── README.md                   # Questa guida, in francese
-└── README.<code>.md            # Traduzioni: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # Questa guida, in francese
+└── docs/README-LINUX.<code>.md # Traduzioni: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

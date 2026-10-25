@@ -1,6 +1,6 @@
 # IPv4 Subnet Mask Calculator — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · **Filipino**
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · **Filipino**
 
 > **Branch na `Linux`**: ang bersyong Linux ng software. Nakalaan ang branch na `main` sa distribusyon para sa Windows; huwag pagsamahin ang dalawa.
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (branch na Linux)
 ├── calculateur-masques.desktop # Entry ng menu para sa mga desktop environment
 ├── INSTALLER.md                # Detalyadong tagubilin sa pag-install (sa Pranses)
 ├── LICENSE                     # MIT na lisensya
-├── README.md                   # Gabay na ito, sa Pranses
-└── README.<code>.md            # Mga salin: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # Gabay na ito, sa Pranses
+└── docs/README-LINUX.<code>.md # Mga salin: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

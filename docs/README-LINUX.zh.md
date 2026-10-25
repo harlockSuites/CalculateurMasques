@@ -1,6 +1,6 @@
 # IPv4 子网掩码计算器 — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · **中文** · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · **中文** · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **`Linux` 分支**：本软件的 Linux 版本。`main` 分支专用于 Windows 发行版；请勿将两者互相合并。
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (Linux 分支)
 ├── calculateur-masques.desktop # 桌面环境的菜单项
 ├── INSTALLER.md                # 详细安装说明（法语）
 ├── LICENSE                     # MIT 许可证
-├── README.md                   # 本指南，法语版
-└── README.<code>.md            # 翻译版本：en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # 本指南，法语版
+└── docs/README-LINUX.<code>.md # 翻译版本：en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

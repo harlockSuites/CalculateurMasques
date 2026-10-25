@@ -1,6 +1,6 @@
 # Калькулятор масок подсетей IPv4 — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · **Русский** · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · **Русский** · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · [Tiếng Việt](README-LINUX.vi.md) · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **Ветка `Linux`**: версия программы для Linux. Ветка `main` зарезервирована для дистрибутива Windows; не сливайте одну ветку в другую.
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (ветка Linux)
 ├── calculateur-masques.desktop # Пункт меню для сред рабочего стола
 ├── INSTALLER.md                # Подробные инструкции по установке (на французском)
 ├── LICENSE                     # Лицензия MIT
-├── README.md                   # Это руководство, на французском
-└── README.<code>.md            # Переводы: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # Это руководство, на французском
+└── docs/README-LINUX.<code>.md # Переводы: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---

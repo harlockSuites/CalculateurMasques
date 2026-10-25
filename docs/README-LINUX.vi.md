@@ -1,6 +1,6 @@
 # Máy Tính Mặt Nạ Mạng Con IPv4 — Linux
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · **Tiếng Việt** · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README-LINUX.md) · [English](README-LINUX.en.md) · [Español](README-LINUX.es.md) · [Português](README-LINUX.pt.md) · [Italiano](README-LINUX.it.md) · [Српски](README-LINUX.sr.md) · [Polski](README-LINUX.pl.md) · [Magyar](README-LINUX.hu.md) · [Русский](README-LINUX.ru.md) · [हिन्दी](README-LINUX.hi.md) · [中文](README-LINUX.zh.md) · **Tiếng Việt** · [한국어](README-LINUX.ko.md) · [日本語](README-LINUX.ja.md) · [Filipino](README-LINUX.fil.md)
 
 > **Nhánh `Linux`**: phiên bản Linux của phần mềm. Nhánh `main` chỉ dành cho bản phân phối Windows; không hợp nhất nhánh này vào nhánh kia.
 
@@ -188,8 +188,8 @@ CalculateurMasques/            (nhánh Linux)
 ├── calculateur-masques.desktop # Mục menu cho các môi trường desktop
 ├── INSTALLER.md                # Hướng dẫn cài đặt chi tiết (bằng tiếng Pháp)
 ├── LICENSE                     # Giấy phép MIT
-├── README.md                   # Hướng dẫn này, bằng tiếng Pháp
-└── README.<code>.md            # Các bản dịch: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
+├── README-LINUX.md             # Hướng dẫn này, bằng tiếng Pháp
+└── docs/README-LINUX.<code>.md # Các bản dịch: en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---
