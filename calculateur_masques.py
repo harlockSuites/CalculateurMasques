@@ -97,6 +97,18 @@ def ip_to_decimal(ip):
         val = val * 256 + int(o)
     return str(val)
 
+def is_wildcard_mask(text):
+    """Vrai pour un masque inversé (ex. 0.0.0.255) : octets décimaux dont les 1 sont
+    contigus en bas. 0.0.0.0 et 255.255.255.255 restent des masques normaux (/0 et /32)."""
+    try:
+        v = int(ipaddress.IPv4Address(text.strip()))
+    except ValueError:
+        return False
+    inv = ~v & 0xFFFFFFFF
+    if inv & (inv + 1) == 0:      # masque normal : 1 contigus en haut
+        return False
+    return v & (v + 1) == 0       # 0 contigus en haut, 1 en bas
+
 def copy_to_clipboard(text):
     root.clipboard_clear()
     root.clipboard_append(text)
@@ -125,6 +137,10 @@ def do_calculate(event=None):
         lbl.config(text="—", fg=SUBTEXT)
     lbl_status.config(text="", fg=TEXT)
     lbl_member_result.config(text="", fg=SUBTEXT)
+
+    if is_wildcard_mask(mask_str):
+        lbl_status.config(text=t("status_err_wildcard"), fg=ERROR)
+        return
 
     cidr = None
     if cidr_str:
@@ -249,6 +265,12 @@ def on_cidr_change(*args):
 
 def on_mask_change(*args):
     val = mask_var.get()
+    if is_wildcard_mask(val):
+        lbl_mask_preview.config(text="", fg=SUBTEXT)
+        lbl_status.config(text=t("status_err_wildcard"), fg=ERROR)
+        return
+    if lbl_status.cget("text") == t("status_err_wildcard"):
+        lbl_status.config(text="")   # le masque a été corrigé : on retire l'erreur
     try:
         net = ipaddress.IPv4Network(f"0.0.0.0/{val}", strict=False)
         lbl_mask_preview.config(text=f"/{net.prefixlen}", fg=ACCENT2)
