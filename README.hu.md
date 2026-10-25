@@ -6,6 +6,8 @@
 
 Tárhely: <https://github.com/harlockSuites/CalculateurMasques>
 
+> **Linux:** a Linuxra készült külön változat a [`Linux` ágon](https://github.com/harlockSuites/CalculateurMasques/tree/Linux) érhető el. Egy előre lefordított futtatható fájl (előzetes kiadás, Debian 12, x86-64) a [`Linux-v1.0` kiadásban](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0) található. Ez a README a Windows-változatot ismerteti.
+
 ---
 
 ## Áttekintés

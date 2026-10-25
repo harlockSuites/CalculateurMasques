@@ -6,6 +6,8 @@ IPv4 서브넷 마스크를 계산하고, 네트워크를 서브넷으로 분할
 
 저장소: <https://github.com/harlockSuites/CalculateurMasques>
 
+> **Linux:** Linux 전용 버전은 [`Linux` 브랜치](https://github.com/harlockSuites/CalculateurMasques/tree/Linux)에서 제공됩니다. 미리 빌드된 실행 파일(프리릴리스, Debian 12, x86-64)은 [`Linux-v1.0` 릴리스](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0)에 게시되어 있습니다. 이 README는 Windows 버전을 설명합니다.
+
 ---
 
 ## 개요

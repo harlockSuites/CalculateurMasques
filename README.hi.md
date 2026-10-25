@@ -6,6 +6,8 @@
 
 रिपॉज़िटरी: <https://github.com/harlockSuites/CalculateurMasques>
 
+> **Linux:** Linux के लिए अलग संस्करण [`Linux` ब्रांच](https://github.com/harlockSuites/CalculateurMasques/tree/Linux) में उपलब्ध है। पहले से बनी निष्पादन योग्य फ़ाइल (प्री-रिलीज़, Debian 12, x86-64) [`Linux-v1.0` रिलीज़](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0) में प्रकाशित है। यह README Windows संस्करण का वर्णन करता है।
+
 ---
 
 ## अवलोकन

@@ -6,6 +6,8 @@ Utility grafica **offline**, gratuita e open source, per calcolare le maschere d
 
 Repository: <https://github.com/harlockSuites/CalculateurMasques>
 
+> **Linux:** esiste una versione dedicata a Linux nel [branch `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Un eseguibile precompilato (versione preliminare, Debian 12, x86-64) è pubblicato nella [release `Linux-v1.0`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). Questo README descrive la versione per Windows.
+
 ---
 
 ## Panoramica

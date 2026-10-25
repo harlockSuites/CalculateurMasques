@@ -6,6 +6,8 @@
 
 Репозиторий: <https://github.com/harlockSuites/CalculateurMasques>
 
+> **Linux:** отдельная версия для Linux находится в [ветке `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Готовый исполняемый файл (предварительный выпуск, Debian 12, x86-64) опубликован в [релизе `Linux-v1.0`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). Этот README описывает версию для Windows.
+
 ---
 
 ## Обзор

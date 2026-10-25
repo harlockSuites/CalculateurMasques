@@ -6,6 +6,8 @@ Utilidad gráfica **sin conexión**, gratuita y de código abierto, para calcula
 
 Repositorio: <https://github.com/harlockSuites/CalculateurMasques>
 
+> **Linux:** hay una versión específica para Linux en la [rama `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Un ejecutable precompilado (versión preliminar, Debian 12, x86-64) está publicado en la [versión `Linux-v1.0`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). Este README describe la versión de Windows.
+
 ---
 
 ## Descripción general
