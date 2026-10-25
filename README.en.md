@@ -127,6 +127,20 @@ CalculateurMasques\
 
 ---
 
+## Antivirus and false positives
+
+As of October 25, 2026, VirusTotal flags the `CalculateurMasquesIPv4.exe` executable of version 1.0 with **5 detections out of 69 engines**: Arctic Wolf, Bkav Pro, Microsoft, SecureAge and Zillya. We believe these are **false positives**, which are common for a recent, digitally unsigned Python program packaged with PyInstaller. The program contains no network code (it only uses `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` and `os`, plus Pillow for the window icon) and all of its source code is public in this repository.
+
+False positive reports were sent to the five vendors concerned on October 25, 2026. This section will be updated with their responses.
+
+To verify your download:
+
+- SHA-256: `6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- VirusTotal report: <https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- You can also build the executable yourself from the source code (see "Building the executable").
+
+---
+
 ## License
 
 Distributed under the [MIT](LICENSE) license — © 2026 Harlock S.

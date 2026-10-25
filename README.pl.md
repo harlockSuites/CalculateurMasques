@@ -127,6 +127,20 @@ CalculateurMasques\
 
 ---
 
+## Antywirusy i fałszywe alarmy
+
+Według stanu na 25 października 2026 r. VirusTotal oznacza plik wykonywalny `CalculateurMasquesIPv4.exe` w wersji 1.0 jako zagrożenie w przypadku **5 z 69 silników**: Arctic Wolf, Bkav Pro, Microsoft, SecureAge i Zillya. Uważamy, że są to **fałszywe alarmy**, częste w przypadku programu w Pythonie spakowanego za pomocą PyInstaller, świeżego i niepodpisanego cyfrowo. Program nie zawiera żadnego kodu sieciowego (używa wyłącznie `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` i `os`, a ponadto Pillow do ikony okna), a cały jego kod źródłowy jest publicznie dostępny w tym repozytorium.
+
+Zgłoszenia fałszywych alarmów zostały wysłane 25 października 2026 r. do wszystkich pięciu wymienionych producentów. Ta sekcja zostanie zaktualizowana o ich odpowiedzi.
+
+Aby zweryfikować pobrany plik:
+
+- SHA-256: `6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- Raport VirusTotal: <https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- Możesz też samodzielnie skompilować plik wykonywalny z kodu źródłowego (zobacz „Kompilacja pliku wykonywalnego”).
+
+---
+
 ## Licencja
 
 Rozpowszechniane na licencji [MIT](LICENSE) — © 2026 Harlock S.

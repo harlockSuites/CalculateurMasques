@@ -127,6 +127,20 @@ CalculateurMasques\
 
 ---
 
+## 杀毒软件与误报
+
+截至 2026 年 10 月 25 日，VirusTotal 对 1.0 版本的可执行文件 `CalculateurMasquesIPv4.exe` 报告了 **69 个引擎中有 5 个检测到威胁**：Arctic Wolf、Bkav Pro、Microsoft、SecureAge 和 Zillya。我们认为这些是**误报**：对于使用 PyInstaller 打包、发布时间较短且没有数字签名的 Python 程序，这种情况很常见。该程序不含任何网络代码（仅使用 `tkinter`、`ipaddress`、`csv`、`datetime`、`math`、`sys` 和 `os`，以及用于窗口图标的 Pillow），其全部源代码均公开在本仓库中。
+
+2026 年 10 月 25 日，我们已向这五家厂商提交了误报申诉。本节将根据他们的答复进行更新。
+
+如需验证您下载的文件：
+
+- SHA-256：`6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- VirusTotal 报告：<https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- 您也可以根据源代码自行编译可执行文件（参见“编译可执行文件”）。
+
+---
+
 ## 许可证
 
 基于 [MIT](LICENSE) 许可证发布 — © 2026 Harlock S.

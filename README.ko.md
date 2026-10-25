@@ -127,6 +127,20 @@ CalculateurMasques\
 
 ---
 
+## 백신 프로그램과 오탐
+
+2026년 10월 25일 기준, VirusTotal은 버전 1.0의 실행 파일 `CalculateurMasquesIPv4.exe`에 대해 **69개 엔진 중 5개 탐지**를 보고하고 있습니다(Arctic Wolf, Bkav Pro, Microsoft, SecureAge, Zillya). 이는 **오탐(false positive)**으로 판단됩니다. PyInstaller로 패키징되고, 최근에 만들어졌으며, 디지털 서명이 없는 Python 프로그램에서는 흔히 발생하는 일입니다. 이 프로그램에는 네트워크 관련 코드가 전혀 없으며(`tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys`, `os`만 사용하고, 창 아이콘용으로 Pillow를 사용합니다), 전체 소스 코드는 이 저장소에 공개되어 있습니다.
+
+2026년 10월 25일에 해당 업체 다섯 곳 모두에 오탐 신고를 보냈습니다. 이 섹션은 업체의 답변에 따라 갱신될 예정입니다.
+
+다운로드한 파일을 확인하려면:
+
+- SHA-256: `6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- VirusTotal 보고서: <https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- 소스 코드에서 직접 실행 파일을 컴파일할 수도 있습니다(「실행 파일 컴파일」 참조).
+
+---
+
 ## 라이선스
 
 [MIT](LICENSE) 라이선스로 배포됩니다 — © 2026 Harlock S.

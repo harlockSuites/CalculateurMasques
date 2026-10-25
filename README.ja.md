@@ -127,6 +127,20 @@ CalculateurMasques\
 
 ---
 
+## ウイルス対策ソフトと誤検知
+
+2026年10月25日時点で、VirusTotal はバージョン 1.0 の実行ファイル `CalculateurMasquesIPv4.exe` について、**69 エンジン中 5 件の検出**を報告しています（Arctic Wolf、Bkav Pro、Microsoft、SecureAge、Zillya）。これは**誤検知**であると考えています。PyInstaller でパッケージ化された、新しく電子署名のない Python プログラムでは、よくあることです。このプログラムにはネットワーク関連のコードは一切含まれておらず（使用しているのは `tkinter`、`ipaddress`、`csv`、`datetime`、`math`、`sys`、`os` のみで、ウィンドウアイコン用に Pillow を使っています）、ソースコードはすべてこのリポジトリで公開されています。
+
+2026年10月25日に、該当する 5 社へ誤検知の報告を送信しました。このセクションは、各社からの回答に応じて更新します。
+
+ダウンロードしたファイルを確認するには：
+
+- SHA-256：`6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- VirusTotal レポート：<https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- ソースコードから自分で実行ファイルをビルドすることもできます（「実行ファイルのビルド」を参照）。
+
+---
+
 ## ライセンス
 
 [MIT](LICENSE) ライセンスの下で配布されています — © 2026 Harlock S.
