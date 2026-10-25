@@ -1,8 +1,12 @@
 # Calculateur de Masques IPv4 — Linux
 
+**Français** · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+
 > **Branche `Linux`** : version Linux du logiciel. La branche `main` est réservée à la distribution Windows ; ne pas fusionner l'une dans l'autre.
 
 Utilitaire graphique de calcul de masques de sous-réseau IPv4, avec support de 15 langues, découpage de sous-réseaux, historique et export.
+
+Dépôt : <https://github.com/harlockSuites/CalculateurMasques/tree/Linux>
 
 ---
 
@@ -58,7 +62,7 @@ L'application est organisée en trois onglets :
 |---|---|
 | Romanes | Français · English · Español · Português · Italiano |
 | Centre/Est Europe | Српски · Polski · Magyar · Русский |
-| Asie du Sud/Est | हिन्दी · 中文 · Tiếng Việt · 한국어 · 日本語 · Filipino |
+| Asie du Sud/Est | हिन्दी · 中文 · Tiếng Việt · Korean (한국어) · 日本語 · Filipino |
 
 Le changement de langue est instantané, sans redémarrage.
 
@@ -118,7 +122,7 @@ python3 calculateur_masques.py
 
 ### Via un exécutable autonome
 
-Un exécutable autonome (PyInstaller) se compile en une commande (voir « Compiler un exécutable autonome » plus bas). Quand une version précompilée est publiée, elle se trouve dans les [Releases](../../releases) du dépôt, sous une étiquette `Linux-v*` ; elle est bâtie sur Debian 12 (glibc 2.36, Python 3.11, x86-64) :
+Un exécutable autonome (PyInstaller) se compile en une commande (voir « Compiler un exécutable autonome » plus bas). Une version précompilée est publiée (en préversion) dans les [Releases](https://github.com/harlockSuites/CalculateurMasques/releases) du dépôt, sous une étiquette `Linux-v*` ; elle est bâtie sur Debian 12 (glibc 2.36, Python 3.11, x86-64) :
 
 ```bash
 chmod +x CalculateurMasquesIPv4
@@ -182,9 +186,10 @@ CalculateurMasques/            (branche Linux)
 ├── banner.png                  # Bannière de la fenêtre « À propos » (600 x 200)
 ├── lancer.sh                   # Script de lancement avec vérification des dépendances
 ├── calculateur-masques.desktop # Entrée de menu pour environnements de bureau
-├── INSTALLER.md                # Instructions d'installation détaillées
+├── INSTALLER.md                # Instructions d'installation détaillées (en français)
 ├── LICENSE                     # Licence MIT
-└── README.md
+├── README.md                   # Ce guide, en français
+└── README.<code>.md            # Traductions : en, es, pt, it, sr, pl, hu, ru, hi, zh, vi, ko, ja, fil
 ```
 
 ---
