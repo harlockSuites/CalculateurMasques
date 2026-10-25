@@ -1,0 +1,5 @@
+# PyInstaller et Python
+build/
+dist/
+__pycache__/
+*.pyc
