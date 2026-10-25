@@ -135,8 +135,9 @@ Se enviaron informes de falsos positivos el 25 de octubre de 2026 a los cinco pr
 
 Para verificar su descarga:
 
-- SHA-256: `6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- SHA-256 (v1.0): `6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
 - Informe de VirusTotal: <https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- SHA-256 (v1.1): `bddbfc4ce674cffa78f0a18cb7e9554d2f2fe3ced46cd1cfb99ae907e9001d65`
 - También puede compilar el ejecutable usted mismo a partir del código fuente (véase «Compilar el ejecutable»).
 
 ---

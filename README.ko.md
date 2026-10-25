@@ -135,8 +135,9 @@ CalculateurMasques\
 
 다운로드한 파일을 확인하려면:
 
-- SHA-256: `6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
+- SHA-256 (v1.0): `6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f`
 - VirusTotal 보고서: <https://www.virustotal.com/gui/file/6e1c6d50e0232f7ca9b547336251c379ea9c607214b47540b8ad3368933b3d7f>
+- SHA-256 (v1.1): `bddbfc4ce674cffa78f0a18cb7e9554d2f2fe3ced46cd1cfb99ae907e9001d65`
 - 소스 코드에서 직접 실행 파일을 컴파일할 수도 있습니다(「실행 파일 컴파일」 참조).
 
 ---
