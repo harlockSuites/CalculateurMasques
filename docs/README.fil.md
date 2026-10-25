@@ -1,6 +1,6 @@
 # IPv4 Subnet Mask Calculator
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · **Filipino**
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · **Filipino**
 
 **Offline** na graphical utility, libre at open-source, para kalkulahin ang mga IPv4 subnet mask, hatiin ang isang network sa mga subnet, magtago ng kasaysayan at i-export ito. Ang interface ay may **15 wika**.
 
@@ -146,4 +146,4 @@ Para ma-verify ang iyong na-download:
 
 ## Lisensya
 
-Ipinamamahagi sa ilalim ng lisensyang [MIT](LICENSE) — © 2026 Harlock S.
+Ipinamamahagi sa ilalim ng lisensyang [MIT](../LICENSE) — © 2026 Harlock S.

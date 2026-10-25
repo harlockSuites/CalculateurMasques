@@ -1,6 +1,6 @@
 # Máy Tính Mặt Nạ Mạng Con IPv4
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · **Tiếng Việt** · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · **Tiếng Việt** · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 Tiện ích đồ họa **ngoại tuyến**, miễn phí và mã nguồn mở, dùng để tính mặt nạ mạng con IPv4, chia một mạng thành các mạng con, lưu lịch sử và xuất ra tệp. Giao diện hỗ trợ **15 ngôn ngữ**.
 
@@ -146,4 +146,4 @@ Các báo cáo báo động giả đã được gửi vào ngày 25 tháng 10 n�
 
 ## Giấy phép
 
-Phân phối theo giấy phép [MIT](LICENSE) — © 2026 Harlock S.
+Phân phối theo giấy phép [MIT](../LICENSE) — © 2026 Harlock S.

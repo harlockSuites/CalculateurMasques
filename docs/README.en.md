@@ -1,6 +1,6 @@
 # IPv4 Subnet Mask Calculator
 
-[Français](README.md) · **English** · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · **English** · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 **Offline**, free and open-source graphical utility to calculate IPv4 subnet masks, split a network into subnets, keep a history and export it. Interface in **15 languages**.
 
@@ -146,4 +146,4 @@ To verify your download:
 
 ## License
 
-Distributed under the [MIT](LICENSE) license — © 2026 Harlock S.
+Distributed under the [MIT](../LICENSE) license — © 2026 Harlock S.

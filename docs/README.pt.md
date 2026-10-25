@@ -1,6 +1,6 @@
 # Calculadora de Máscaras de Sub-rede IPv4
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · **Português** · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · **Português** · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 Utilitário gráfico **offline**, gratuito e de código aberto, para calcular máscaras de sub-rede IPv4, dividir uma rede em sub-redes, manter um histórico e exportá-lo. Interface em **15 idiomas**.
 
@@ -146,4 +146,4 @@ Para verificar o seu download:
 
 ## Licença
 
-Distribuído sob a licença [MIT](LICENSE) — © 2026 Harlock S.
+Distribuído sob a licença [MIT](../LICENSE) — © 2026 Harlock S.

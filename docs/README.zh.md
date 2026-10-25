@@ -1,6 +1,6 @@
 # IPv4 子网掩码计算器
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · **中文** · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · **中文** · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 **离线**、免费、开源的图形化实用工具，用于计算 IPv4 子网掩码、将网络划分为子网、保存历史记录并导出。界面支持 **15 种语言**。
 
@@ -146,4 +146,4 @@ CalculateurMasques\
 
 ## 许可证
 
-基于 [MIT](LICENSE) 许可证发布 — © 2026 Harlock S.
+基于 [MIT](../LICENSE) 许可证发布 — © 2026 Harlock S.

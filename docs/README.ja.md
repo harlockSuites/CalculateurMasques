@@ -1,6 +1,6 @@
 # IPv4 サブネットマスク計算機
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · **日本語** · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · **日本語** · [Filipino](README.fil.md)
 
 **オフライン**で使える無料のオープンソースのグラフィカルユーティリティです。IPv4 サブネットマスクの計算、ネットワークのサブネットへの分割、履歴の保存とエクスポートができます。インターフェースは **15 言語**に対応しています。
 
@@ -146,4 +146,4 @@ CalculateurMasques\
 
 ## ライセンス
 
-[MIT](LICENSE) ライセンスの下で配布されています — © 2026 Harlock S.
+[MIT](../LICENSE) ライセンスの下で配布されています — © 2026 Harlock S.

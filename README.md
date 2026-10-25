@@ -1,6 +1,6 @@
 # Calculateur de Masques IPv4
 
-**Français** · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+**Français** · [English](docs/README.en.md) · [Español](docs/README.es.md) · [Português](docs/README.pt.md) · [Italiano](docs/README.it.md) · [Српски](docs/README.sr.md) · [Polski](docs/README.pl.md) · [Magyar](docs/README.hu.md) · [Русский](docs/README.ru.md) · [हिन्दी](docs/README.hi.md) · [中文](docs/README.zh.md) · [Tiếng Việt](docs/README.vi.md) · [한국어](docs/README.ko.md) · [日本語](docs/README.ja.md) · [Filipino](docs/README.fil.md)
 
 Utilitaire graphique **hors-ligne**, gratuit et open-source, pour calculer les masques de sous-réseau IPv4, découper un réseau en sous-réseaux, garder un historique et l'exporter. Interface en **15 langues**.
 

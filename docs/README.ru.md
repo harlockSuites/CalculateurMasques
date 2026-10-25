@@ -1,6 +1,6 @@
 # Калькулятор масок подсетей IPv4
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · **Русский** · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · **Русский** · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 **Автономная** (без доступа в интернет), бесплатная утилита с открытым исходным кодом и графическим интерфейсом: вычисляет маски подсетей IPv4, разбивает сеть на подсети, ведёт историю вычислений и позволяет её экспортировать. Интерфейс доступен на **15 языках**.
 
@@ -146,4 +146,4 @@ CalculateurMasques\
 
 ## Лицензия
 
-Распространяется по лицензии [MIT](LICENSE) — © 2026 Harlock S.
+Распространяется по лицензии [MIT](../LICENSE) — © 2026 Harlock S.

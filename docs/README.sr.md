@@ -1,6 +1,6 @@
 # IPv4 Калкулатор Мрежних Маски
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · **Српски** · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · **Српски** · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 Графички алат који ради **ван мреже**, бесплатан и отвореног кода, за израчунавање IPv4 маски подмрежа, поделу мреже на подмреже, чување историје и њен извоз. Интерфејс на **15 језика**.
 
@@ -146,4 +146,4 @@ CalculateurMasques\
 
 ## Лиценца
 
-Дистрибуира се под лиценцом [MIT](LICENSE) — © 2026 Harlock S.
+Дистрибуира се под лиценцом [MIT](../LICENSE) — © 2026 Harlock S.

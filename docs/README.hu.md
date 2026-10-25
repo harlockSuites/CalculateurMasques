@@ -1,6 +1,6 @@
 # IPv4 Alhálózati Maszk Kalkulátor
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · **Magyar** · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · **Magyar** · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 **Offline**, ingyenes és nyílt forráskódú grafikus segédprogram IPv4 alhálózati maszkok kiszámításához, hálózatok alhálózatokra osztásához, előzmények vezetéséhez és exportálásához. A felület **15 nyelven** érhető el.
 
@@ -146,4 +146,4 @@ Letöltésének ellenőrzéséhez:
 
 ## Licenc
 
-[MIT](LICENSE) licenc alatt terjesztve — © 2026 Harlock S.
+[MIT](../LICENSE) licenc alatt terjesztve — © 2026 Harlock S.

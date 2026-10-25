@@ -1,6 +1,6 @@
 # IPv4 सबनेट मास्क कैलकुलेटर
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · **हिन्दी** · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · **हिन्दी** · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 **ऑफ़लाइन**, निःशुल्क और ओपन-सोर्स ग्राफ़िकल उपयोगिता, जिससे IPv4 सबनेट मास्क की गणना की जा सकती है, किसी नेटवर्क को सबनेट में विभाजित किया जा सकता है, इतिहास रखा जा सकता है और उसे निर्यात किया जा सकता है। इंटरफ़ेस **15 भाषाओं** में उपलब्ध है।
 
@@ -146,4 +146,4 @@ CalculateurMasques\
 
 ## लाइसेंस
 
-[MIT](LICENSE) लाइसेंस के अंतर्गत वितरित — © 2026 Harlock S.
+[MIT](../LICENSE) लाइसेंस के अंतर्गत वितरित — © 2026 Harlock S.

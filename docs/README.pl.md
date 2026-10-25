@@ -1,6 +1,6 @@
 # Kalkulator Masek Podsieci IPv4
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · **Polski** · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · **Polski** · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 Graficzne narzędzie **offline**, darmowe i open source, do obliczania masek podsieci IPv4, dzielenia sieci na podsieci, prowadzenia historii obliczeń i jej eksportu. Interfejs w **15 językach**.
 
@@ -146,4 +146,4 @@ Aby zweryfikować pobrany plik:
 
 ## Licencja
 
-Rozpowszechniane na licencji [MIT](LICENSE) — © 2026 Harlock S.
+Rozpowszechniane na licencji [MIT](../LICENSE) — © 2026 Harlock S.

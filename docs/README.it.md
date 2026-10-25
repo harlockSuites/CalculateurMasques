@@ -1,6 +1,6 @@
 # Calcolatore di Maschere di Sottorete IPv4
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · **Italiano** · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · **Italiano** · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 Utility grafica **offline**, gratuita e open source, per calcolare le maschere di sottorete IPv4, suddividere una rete in sottoreti, conservare una cronologia ed esportarla. Interfaccia in **15 lingue**.
 
@@ -146,4 +146,4 @@ Per verificare il tuo download:
 
 ## Licenza
 
-Distribuito con licenza [MIT](LICENSE) — © 2026 Harlock S.
+Distribuito con licenza [MIT](../LICENSE) — © 2026 Harlock S.

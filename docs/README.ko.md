@@ -1,6 +1,6 @@
 # IPv4 서브넷 마스크 계산기
 
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · **한국어** · [日本語](README.ja.md) · [Filipino](README.fil.md)
+[Français](../README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [Српски](README.sr.md) · [Polski](README.pl.md) · [Magyar](README.hu.md) · [Русский](README.ru.md) · [हिन्दी](README.hi.md) · [中文](README.zh.md) · [Tiếng Việt](README.vi.md) · **한국어** · [日本語](README.ja.md) · [Filipino](README.fil.md)
 
 IPv4 서브넷 마스크를 계산하고, 네트워크를 서브넷으로 분할하고, 기록을 보관하고 내보낼 수 있는 **오프라인**, 무료, 오픈 소스 그래픽 유틸리티입니다. 인터페이스는 **15개 언어**를 지원합니다.
 
@@ -146,4 +146,4 @@ CalculateurMasques\
 
 ## 라이선스
 
-[MIT](LICENSE) 라이선스로 배포됩니다 — © 2026 Harlock S.
+[MIT](../LICENSE) 라이선스로 배포됩니다 — © 2026 Harlock S.
