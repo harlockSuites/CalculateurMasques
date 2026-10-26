@@ -67,7 +67,25 @@
 언어 변경은 재시작 없이 즉시 적용됩니다.
 
 ### 정보 버튼
-언어 선택기 옆의 **정보** 버튼을 누르면 배너와 "이 오프라인 유틸리티 소프트웨어는 무료이며 오픈 소스입니다."라는 메시지가 담긴 창이 열리며, 이 메시지는 15개 언어로 번역되어 있습니다. Esc 키 또는 **닫기** 버튼으로 창을 닫습니다.
+언어 선택기 옆의 **정보** 버튼을 누르면 배너와 "이 오프라인 유틸리티 소프트웨어는 무료이며 오픈 소스입니다."라는 메시지가 담긴 창이 열리며, 이 메시지는 15개 언어로 번역되어 있습니다. Esc 키 또는 **닫기** 버튼으로 창을 닫습니다. `.deb` 패키지, AppImage 또는 독립 실행형 실행 파일에서는 이 창 왼쪽 아래의 작은 버튼으로 소프트웨어 아이콘을 추가하거나 제거할 수 있습니다(아래 참조).
+
+### 메뉴 및 바탕 화면 아이콘
+`.deb` 패키지, AppImage 또는 독립 실행형 실행 파일에서는 처음 실행할 때 **「아이콘을 추가할까요?」** 창이 열리며, **추가**, **다시 묻지 않기**, **닫기** 세 개의 버튼이 있습니다(**닫기**는 아무것도 기억하지 않으므로 다음 실행 때 다시 묻습니다). 이 창은 나중에 「정보」 창 아래쪽의 버튼으로 아이콘을 추가하거나 제거할 수 있다는 점을 알려 줍니다.
+- **추가**는 관리자 권한 없이 **응용 프로그램 메뉴** 항목과 **바탕 화면 폴더**의 아이콘을 만듭니다. AppImage와 독립 실행형 실행 파일에서는 소프트웨어를 먼저 `~/.local/share/calculateur-masques/app`에 복사합니다(다운로드한 파일을 옮겨도 아이콘이 유지됩니다). `.deb`에서는 아무것도 복사하지 않습니다.
+- **다시 묻지 않기**는 선택을 `~/.config/calculateur-masques/config.json`에 저장하며, 「정보」 버튼으로 아이콘을 제거할 때도 저장됩니다.
+- `.deb`는 설치할 때 아이콘을 추가하지 않습니다. 실행기가 숨겨져 있어 요청할 때만 아이콘이 나타납니다.
+
+> **GNOME**은 “Desktop Icons” 확장 기능이 없으면 바탕 화면 폴더의 아이콘을 표시하지 않습니다. 이 경우 바탕 화면 아이콘은 존재하지만 보이지 않습니다(소프트웨어가 이를 알려 줍니다). 반면 응용 프로그램 메뉴 항목은 표시됩니다.
+
+모두 수동으로 삭제하려면:
+
+```bash
+rm -r ~/.local/share/calculateur-masques
+rm -f ~/.local/share/applications/calculateur-masques.desktop
+rm -f ~/.local/share/icons/hicolor/512x512/apps/calculateur-masques.png
+rm -f ~/Bureau/calculateur-masques.desktop ~/Desktop/calculateur-masques.desktop
+rm -r ~/.config/calculateur-masques
+```
 
 ### 한국어와 글꼴
 한국어는 목록에 **Korean**이라는 이름(영어)으로 표시됩니다(한국어 글꼴이 없는 시스템에서는 「한국어」가 네모 칸으로 표시되기 때문입니다). 시스템에 한국어 글꼴이 하나도 없으면, 이 언어를 선택할 때 **영어**로 된 대화 상자("Font needed")가 열려 글꼴이 필요한 이유를 설명하고 다음을 제공합니다.
@@ -120,16 +138,54 @@ chmod +x lancer.sh
 python3 calculateur_masques.py
 ```
 
+### `.deb` 패키지로 실행 (Debian, Ubuntu, Linux Mint)
+
+미리 컴파일된 파일(`.deb`, AppImage, 독립 실행형 실행 파일, `SHA256SUMS-linux.txt`)은 저장소의 [릴리스](https://github.com/harlockSuites/CalculateurMasques/releases)에 `Linux-v*` 태그로 (프리릴리스로) 게시되어 있으며, Debian 12(glibc 2.36, Python 3.11, x86-64)에서 빌드되었습니다. 이 패키지는 모든 사용자를 대상으로 소프트웨어를 설치합니다.
+
+```bash
+sudo apt install ./calculateur-masques_1.0.1_amd64.deb
+calculateur-masques
+```
+
+설치해도 메뉴나 바탕 화면에 아이콘은 추가되지 않습니다. `calculateur-masques`를 처음 한 번 실행하면 「아이콘을 추가할까요?」 창에서 추가를 제안합니다. 제거하려면:
+
+```bash
+sudo apt remove calculateur-masques
+```
+
+소프트웨어가 추가한 메뉴 항목은 저절로 사라지지만, 바탕 화면 바로 가기는 단순한 파일이므로 그대로 남습니다. 그 전에 「정보」 창의 버튼으로, 또는 수동으로 제거하세요.
+
+### AppImage로 실행
+
+설치 없이 파일 하나로 실행합니다.
+
+```bash
+chmod +x CalculateurMasques-1.0.1-x86_64.AppImage
+./CalculateurMasques-1.0.1-x86_64.AppImage
+```
+
+시스템에 FUSE가 없는 경우:
+
+```bash
+./CalculateurMasques-1.0.1-x86_64.AppImage --appimage-extract-and-run
+```
+
 ### 독립 실행형 실행 파일로 실행
 
-독립 실행형 실행 파일(PyInstaller)은 명령 하나로 컴파일할 수 있습니다(아래 「독립 실행형 실행 파일 컴파일」 참조). 미리 컴파일된 버전은 저장소의 [릴리스](https://github.com/harlockSuites/CalculateurMasques/releases)에 `Linux-v*` 태그로 (프리릴리스로) 게시되어 있으며, Debian 12(glibc 2.36, Python 3.11, x86-64)에서 빌드되었습니다.
+독립 실행형 실행 파일(PyInstaller)은 명령 하나로 컴파일할 수 있으며(아래 「독립 실행형 실행 파일 컴파일」 참조), 미리 컴파일된 버전이 릴리스에 있습니다.
 
 ```bash
 chmod +x CalculateurMasquesIPv4
 ./CalculateurMasquesIPv4
 ```
 
-> **glibc 관련 주의**: 이 바이너리는 Debian 12에서 빌드되었습니다. 해당 배포판에서 검증되었으며, glibc 2.36 이상의 배포판에서도 동작해야 하지만 그보다 오래된 버전에서는 동작하지 않습니다. 이 경우 소스에서 다시 컴파일하세요.
+다운로드한 파일을 검증하려면:
+
+```bash
+sha256sum -c SHA256SUMS-linux.txt
+```
+
+> **glibc 관련 주의**: 이 파일들은 Debian 12에서 빌드되었습니다. 해당 배포판에서 검증되었으며, glibc 2.36 이상의 배포판에서도 동작해야 하지만 그보다 오래된 버전에서는 동작하지 않습니다. 이 경우 소스에서 다시 컴파일하세요.
 
 ---
 
@@ -174,6 +230,17 @@ pyinstaller --onefile --windowed \
 
 > **참고:** Ubuntu에서 컴파일한 Linux 바이너리는 glibc 버전 차이로 인해 Arch나 Fedora에서 반드시 동작하는 것은 아닙니다. 대상 배포판에서 컴파일하거나 대상 배포판용 Docker 이미지를 사용하세요.
 
+### `.deb`와 AppImage 빌드
+
+Debian 또는 Ubuntu에서 PyInstaller와 `appimagetool`이 PATH에 있으면, 스크립트가 먼저 PyInstaller 폴더를 만든 다음 `dist/`에 두 패키지를 생성합니다.
+
+```bash
+python3 packaging/build_linux_packages.py
+python3 packaging/build_linux_packages.py --only deb
+```
+
+`--only deb`(또는 `--only appimage`) 옵션은 둘 중 하나만 빌드합니다.
+
 ---
 
 ## 파일 구조
@@ -186,6 +253,9 @@ CalculateurMasques/            (Linux 브랜치)
 ├── banner.png                  # 정보 창의 배너 (600 x 200)
 ├── lancer.sh                   # 의존성 확인 기능이 있는 실행 스크립트
 ├── calculateur-masques.desktop # 데스크톱 환경용 메뉴 항목
+├── packaging/                  # .deb와 AppImage 빌드
+│   ├── build_linux_packages.py # 빌드 스크립트
+│   └── linux/                  # AppRun, 실행기, 매뉴얼 페이지, .deb 변경 기록
 ├── INSTALLER.md                # 상세 설치 안내 (프랑스어)
 ├── LICENSE                     # MIT 라이선스
 ├── README-LINUX.md             # 이 가이드 (프랑스어)
@@ -202,7 +272,7 @@ CalculateurMasques/            (Linux 브랜치)
 | 마우스 휠 | `MouseWheel` (WinAPI) | `Button-4` / `Button-5` (X11) + `MouseWheel` (Wayland) |
 | CSV 내보내기 | BOM이 있는 UTF-8 (Excel) | BOM이 없는 UTF-8 (표준) |
 | 실행 파일 | 독립 실행형 `.exe` | PyInstaller로 만든 ELF 바이너리 (배포판에 따라 다름) |
-| 데스크톱 통합 | Windows 바로 가기 | `.desktop` 파일 (XDG) |
+| 데스크톱 통합 | Windows 바로 가기 | `.deb` 패키지, AppImage, 메뉴 및 바탕 화면 아이콘 (`.desktop` 파일, XDG) |
 
 ---
 

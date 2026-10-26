@@ -67,7 +67,25 @@ Az alkalmazás három fülből áll:
 A nyelvváltás azonnali, újraindítás nélkül.
 
 ### Névjegy gomb
-A nyelvválasztó mellett egy ablakot nyit meg a bannerrel és a „Ez az offline segédprogram ingyenes és nyílt forráskódú." üzenettel, mind a 15 nyelvre lefordítva. Az Esc billentyű vagy a Bezárás gomb bezárja.
+A nyelvválasztó mellett egy ablakot nyit meg a bannerrel és a „Ez az offline segédprogram ingyenes és nyílt forráskódú." üzenettel, mind a 15 nyelvre lefordítva. Az Esc billentyű vagy a Bezárás gomb bezárja. A `.deb` csomagból, az AppImage-ből vagy az önálló futtatható fájlból indítva az ablak bal alsó sarkában egy kis gomb hozzáadja vagy eltávolítja a szoftver ikonját (lásd lent).
+
+### Menü- és asztali ikon
+A `.deb` csomagból, az AppImage-ből vagy az önálló futtatható fájlból indítva az első megnyitáskor megnyílik egy **„Ikon hozzáadása?”** ablak három gombbal: **Hozzáadás**, **Ne kérdezze többé** és **Bezárás** (amely nem jegyez meg semmit: a kérdés a következő indításkor újra megjelenik). Emlékeztet rá, hogy az ikon később hozzáadható vagy eltávolítható a „Névjegy” ablak alján lévő gombbal.
+- A **Hozzáadás** létrehozza az **alkalmazásmenü** bejegyzését és az **Asztal mappa** ikonját, rendszergazdai jogok nélkül. Az AppImage és az önálló futtatható fájl esetén a szoftver először átmásolódik a `~/.local/share/calculateur-masques/app` mappába (az ikon akkor is megmarad, ha a letöltött fájlt áthelyezi); a `.deb` esetén semmi sem másolódik.
+- A **Ne kérdezze többé** elmenti a választást a `~/.config/calculateur-masques/config.json` fájlba; az ikon eltávolítása a „Névjegy” gombbal szintén elmenti.
+- A `.deb` telepítéskor nem ad hozzá ikont: az indítója rejtett, az ikon csak kérésre jelenik meg.
+
+> A **GNOME** a „Desktop Icons” kiterjesztés nélkül nem jeleníti meg az Asztal mappa ikonjait: az asztali ikon ilyenkor létezik, de láthatatlan marad (a szoftver jelzi ezt). Az alkalmazásmenü bejegyzése viszont látható.
+
+Mindennek kézi eltávolításához:
+
+```bash
+rm -r ~/.local/share/calculateur-masques
+rm -f ~/.local/share/applications/calculateur-masques.desktop
+rm -f ~/.local/share/icons/hicolor/512x512/apps/calculateur-masques.png
+rm -f ~/Bureau/calculateur-masques.desktop ~/Desktop/calculateur-masques.desktop
+rm -r ~/.config/calculateur-masques
+```
 
 ### Koreai nyelv és betűtípus
 A koreai a listában **Korean** néven jelenik meg (angolul, mert a „한국어" koreai betűtípus nélkül négyzetekként jelenne meg). Ha a rendszeren nincs ilyen betűtípus, a kiválasztásakor egy **angol nyelvű** párbeszédablak („Font needed") nyílik meg, amely elmagyarázza a szükségességet, és felajánlja:
@@ -120,16 +138,54 @@ A szkript automatikusan ellenőrzi a Python és a tkinter jelenlétét, és egy�
 python3 calculateur_masques.py
 ```
 
+### A `.deb` csomaggal (Debian, Ubuntu, Linux Mint)
+
+Az előre lefordított fájlok (`.deb`, AppImage, önálló futtatható fájl és `SHA256SUMS-linux.txt`) előzetes verzióként a tárhely [Kiadások](https://github.com/harlockSuites/CalculateurMasques/releases) között vannak közzétéve, egy `Linux-v*` címke alatt; Debian 12 rendszeren készültek (glibc 2.36, Python 3.11, x86-64). A csomag minden felhasználó számára telepíti a szoftvert:
+
+```bash
+sudo apt install ./calculateur-masques_1.0.1_amd64.deb
+calculateur-masques
+```
+
+A telepítés nem ad hozzá ikont sem a menühöz, sem az Asztalhoz: indítsa el egyszer a `calculateur-masques` parancsot, az „Ikon hozzáadása?” ablak felajánlja. Az eltávolításhoz:
+
+```bash
+sudo apt remove calculateur-masques
+```
+
+A szoftver által hozzáadott menübejegyzés magától eltűnik; az Asztal parancsikonja viszont megmarad (egyszerű fájl): távolítsa el előtte a „Névjegy” gombbal, vagy kézzel.
+
+### Az AppImage-dzsel
+
+Egyetlen fájl, telepítés nélkül:
+
+```bash
+chmod +x CalculateurMasques-1.0.1-x86_64.AppImage
+./CalculateurMasques-1.0.1-x86_64.AppImage
+```
+
+Ha a rendszeren nincs FUSE:
+
+```bash
+./CalculateurMasques-1.0.1-x86_64.AppImage --appimage-extract-and-run
+```
+
 ### Önálló futtatható fájllal
 
-Egy önálló futtatható fájl (PyInstaller) egyetlen paranccsal lefordítható (lásd lent az „Önálló futtatható fájl fordítása" szakaszt). Egy előre lefordított változat is közzé van téve (előzetes verzióként) a tárhely [Kiadások](https://github.com/harlockSuites/CalculateurMasques/releases) között, egy `Linux-v*` címke alatt; Debian 12 rendszeren készült (glibc 2.36, Python 3.11, x86-64):
+Egy önálló futtatható fájl (PyInstaller) egyetlen paranccsal lefordítható (lásd lent az „Önálló futtatható fájl fordítása” szakaszt); egy előre lefordított változat a Kiadások között található:
 
 ```bash
 chmod +x CalculateurMasquesIPv4
 ./CalculateurMasquesIPv4
 ```
 
-> **glibc-fenntartás**: ez a bináris Debian 12 rendszeren készült. Ezen a disztribúción ellenőrizték; működnie kell a glibc 2.36-os vagy újabb verzióját használó disztribúciókon is, régebbin viszont nem. Ebben az esetben fordítsa le a forráskódból.
+A letöltött fájlok ellenőrzéséhez:
+
+```bash
+sha256sum -c SHA256SUMS-linux.txt
+```
+
+> **glibc-fenntartás**: ezek a fájlok Debian 12 rendszeren készültek. Ezen a disztribúción ellenőrizték őket; működniük kell a glibc 2.36-os vagy újabb verzióját használó disztribúciókon is, régebbin viszont nem. Ebben az esetben fordítsa le a forráskódból.
 
 ---
 
@@ -174,6 +230,17 @@ A futtatható fájl a `./dist/CalculateurMasquesIPv4` helyen jön létre. Az `--
 
 > **Megjegyzés:** az Ubuntun lefordított Linux bináris nem feltétlenül fog működni Archon vagy Fedorán a glibc-verziók közötti különbségek miatt. Fordítson a célzott disztribúción, vagy használjon Docker-képet a célzott disztribúcióhoz.
 
+### A `.deb` és az AppImage építése
+
+Debian vagy Ubuntu rendszeren, ha a PyInstaller és az `appimagetool` elérhető a PATH-ban, a szkript először egy PyInstaller-mappát épít, majd a két csomagot a `dist/` mappába:
+
+```bash
+python3 packaging/build_linux_packages.py
+python3 packaging/build_linux_packages.py --only deb
+```
+
+Az `--only deb` (vagy `--only appimage`) opció csak az egyiket építi.
+
 ---
 
 ## Fájlstruktúra
@@ -186,6 +253,9 @@ CalculateurMasques/            (Linux ág)
 ├── banner.png                  # A Névjegy ablak bannere (600 x 200)
 ├── lancer.sh                   # Indítószkript függőség-ellenőrzéssel
 ├── calculateur-masques.desktop # Menübejegyzés asztali környezetekhez
+├── packaging/                  # A .deb és az AppImage építése
+│   ├── build_linux_packages.py # Építőszkript
+│   └── linux/                  # AppRun, indító, kézikönyvoldal, a .deb változásnaplója
 ├── INSTALLER.md                # Részletes telepítési útmutató (franciául)
 ├── LICENSE                     # MIT licenc
 ├── README-LINUX.md             # Ez az útmutató, franciául
@@ -202,7 +272,7 @@ CalculateurMasques/            (Linux ág)
 | Egérgörgő | `MouseWheel` (WinAPI) | `Button-4` / `Button-5` (X11) + `MouseWheel` (Wayland) |
 | CSV exportálás | UTF-8 BOM-mal (Excel) | UTF-8 BOM nélkül (szabványos) |
 | Futtatható fájl | Önálló `.exe` | ELF bináris PyInstallerrel (disztribúciófüggő) |
-| Asztali integráció | Windows parancsikon | `.desktop` fájl (XDG) |
+| Asztali integráció | Windows parancsikon | `.deb` csomag, AppImage, menü- és asztali ikon (`.desktop` fájlok, XDG) |
 
 ---
 

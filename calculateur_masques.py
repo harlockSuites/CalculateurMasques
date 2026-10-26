@@ -7,6 +7,7 @@ import sys
 import os
 import shutil
 import hashlib
+import json
 import subprocess
 import threading
 import unicodedata
@@ -77,6 +78,193 @@ def lang_from_argv(argv=None):
     return None
 
 
+# ── Textes propres à la version Linux ─────────────────────────────────────────
+# Bouton « icône sur le bureau » de la fenêtre À propos : textes dans les 15 langues, gardés ici pour que translations.py
+# reste identique à celui de la branche main (Windows). t() les cherche après translations.py ; repli sur l'anglais.
+LINUX_TEXTS = {
+    "fr": {
+        "about_desktop_add": "Ajouter l'icône sur le bureau", "about_desktop_remove": "Retirer l'icône du bureau",
+        "desktop_added": "Icône ajoutée dans le dossier Bureau.", "desktop_removed": "Icône retirée du bureau.",
+        "desktop_missing": "Dossier Bureau introuvable : icône non créée.", "desktop_err": "Échec : {error}",
+        "desktop_hidden": "GNOME n'affiche pas les icônes du bureau sans l'extension « Desktop Icons » : le raccourci existe, mais il reste invisible.",
+        "icon_menu_added": "Icône ajoutée au menu des applications.",
+        "icon_menu_removed": "Icône retirée du menu des applications.",
+        "invite_title": "Ajouter une icône ?",
+        "invite_text": "Voulez-vous ajouter l'icône du logiciel au menu des applications et sur le bureau ?\n\nVous pourrez toujours l'ajouter ou la retirer plus tard avec le bouton en bas de la fenêtre « {about} ».",
+        "invite_add": "Ajouter",
+        "invite_never": "Ne plus demander",
+    },
+    "en": {
+        "about_desktop_add": "Add the icon to the desktop", "about_desktop_remove": "Remove the icon from the desktop",
+        "desktop_added": "Icon added to the Desktop folder.", "desktop_removed": "Icon removed from the desktop.",
+        "desktop_missing": "Desktop folder not found: icon not created.", "desktop_err": "Failed: {error}",
+        "desktop_hidden": "GNOME does not show desktop icons without the “Desktop Icons” extension: the shortcut exists but stays invisible.",
+        "icon_menu_added": "Icon added to the applications menu.",
+        "icon_menu_removed": "Icon removed from the applications menu.",
+        "invite_title": "Add an icon?",
+        "invite_text": "Do you want to add the software's icon to the applications menu and to the desktop?\n\nYou can always add or remove it later with the button at the bottom of the “{about}” window.",
+        "invite_add": "Add",
+        "invite_never": "Don't ask again",
+    },
+    "es": {
+        "about_desktop_add": "Añadir el icono al escritorio", "about_desktop_remove": "Quitar el icono del escritorio",
+        "desktop_added": "Icono añadido a la carpeta Escritorio.", "desktop_removed": "Icono quitado del escritorio.",
+        "desktop_missing": "No se encontró la carpeta Escritorio: icono no creado.", "desktop_err": "Error: {error}",
+        "desktop_hidden": "GNOME no muestra los iconos del escritorio sin la extensión «Desktop Icons»: el acceso directo existe, pero permanece invisible.",
+        "icon_menu_added": "Icono añadido al menú de aplicaciones.",
+        "icon_menu_removed": "Icono quitado del menú de aplicaciones.",
+        "invite_title": "¿Añadir un icono?",
+        "invite_text": "¿Quiere añadir el icono del programa al menú de aplicaciones y al escritorio?\n\nSiempre podrá añadirlo o quitarlo más tarde con el botón situado en la parte inferior de la ventana «{about}».",
+        "invite_add": "Añadir",
+        "invite_never": "No volver a preguntar",
+    },
+    "pt": {
+        "about_desktop_add": "Adicionar o ícone à área de trabalho", "about_desktop_remove": "Remover o ícone da área de trabalho",
+        "desktop_added": "Ícone adicionado à pasta Área de trabalho.", "desktop_removed": "Ícone removido da área de trabalho.",
+        "desktop_missing": "Pasta Área de trabalho não encontrada: ícone não criado.", "desktop_err": "Falha: {error}",
+        "desktop_hidden": "O GNOME não mostra os ícones da área de trabalho sem a extensão “Desktop Icons”: o atalho existe, mas fica invisível.",
+        "icon_menu_added": "Ícone adicionado ao menu de aplicativos.",
+        "icon_menu_removed": "Ícone removido do menu de aplicativos.",
+        "invite_title": "Adicionar um ícone?",
+        "invite_text": "Deseja adicionar o ícone do programa ao menu de aplicativos e à área de trabalho?\n\nVocê poderá sempre adicioná-lo ou removê-lo depois com o botão na parte inferior da janela “{about}”.",
+        "invite_add": "Adicionar",
+        "invite_never": "Não perguntar novamente",
+    },
+    "it": {
+        "about_desktop_add": "Aggiungi l'icona sulla scrivania", "about_desktop_remove": "Rimuovi l'icona dalla scrivania",
+        "desktop_added": "Icona aggiunta alla cartella Scrivania.", "desktop_removed": "Icona rimossa dalla scrivania.",
+        "desktop_missing": "Cartella Scrivania non trovata: icona non creata.", "desktop_err": "Errore: {error}",
+        "desktop_hidden": "GNOME non mostra le icone della scrivania senza l'estensione «Desktop Icons»: il collegamento esiste ma resta invisibile.",
+        "icon_menu_added": "Icona aggiunta al menu delle applicazioni.",
+        "icon_menu_removed": "Icona rimossa dal menu delle applicazioni.",
+        "invite_title": "Aggiungere un'icona?",
+        "invite_text": "Vuoi aggiungere l'icona del programma al menu delle applicazioni e alla scrivania?\n\nPotrai sempre aggiungerla o rimuoverla in seguito con il pulsante in basso nella finestra «{about}».",
+        "invite_add": "Aggiungi",
+        "invite_never": "Non chiedere più",
+    },
+    "sr": {
+        "about_desktop_add": "Додај иконицу на радну површину", "about_desktop_remove": "Уклони иконицу са радне површине",
+        "desktop_added": "Иконица је додата у фолдер радне површине.", "desktop_removed": "Иконица је уклоњена са радне површине.",
+        "desktop_missing": "Фолдер радне површине није пронађен: иконица није направљена.", "desktop_err": "Грешка: {error}",
+        "desktop_hidden": "GNOME не приказује иконице радне површине без проширења „Desktop Icons“: пречица постоји, али остаје невидљива.",
+        "icon_menu_added": "Иконица је додата у мени апликација.",
+        "icon_menu_removed": "Иконица је уклоњена из менија апликација.",
+        "invite_title": "Додати иконицу?",
+        "invite_text": "Желите ли да додате иконицу програма у мени апликација и на радну површину?\n\nУвек можете да је додате или уклоните касније дугметом при дну прозора „{about}“.",
+        "invite_add": "Додај",
+        "invite_never": "Не питај више",
+    },
+    "pl": {
+        "about_desktop_add": "Dodaj ikonę na pulpit", "about_desktop_remove": "Usuń ikonę z pulpitu",
+        "desktop_added": "Ikonę dodano do folderu Pulpit.", "desktop_removed": "Ikonę usunięto z pulpitu.",
+        "desktop_missing": "Nie znaleziono folderu Pulpit: ikona nie została utworzona.", "desktop_err": "Błąd: {error}",
+        "desktop_hidden": "GNOME nie pokazuje ikon na pulpicie bez rozszerzenia „Desktop Icons”: skrót istnieje, ale pozostaje niewidoczny.",
+        "icon_menu_added": "Ikonę dodano do menu aplikacji.",
+        "icon_menu_removed": "Ikonę usunięto z menu aplikacji.",
+        "invite_title": "Dodać ikonę?",
+        "invite_text": "Czy chcesz dodać ikonę programu do menu aplikacji i na pulpit?\n\nZawsze możesz ją później dodać lub usunąć przyciskiem na dole okna „{about}”.",
+        "invite_add": "Dodaj",
+        "invite_never": "Nie pytaj ponownie",
+    },
+    "hu": {
+        "about_desktop_add": "Ikon hozzáadása az asztalhoz", "about_desktop_remove": "Ikon eltávolítása az asztalról",
+        "desktop_added": "Az ikon bekerült az Asztal mappába.", "desktop_removed": "Az ikon eltávolítva az asztalról.",
+        "desktop_missing": "Az Asztal mappa nem található: az ikon nem jött létre.", "desktop_err": "Hiba: {error}",
+        "desktop_hidden": "A GNOME a „Desktop Icons” kiterjesztés nélkül nem jeleníti meg az asztali ikonokat: a parancsikon létezik, de láthatatlan marad.",
+        "icon_menu_added": "Az ikon bekerült az alkalmazásmenübe.",
+        "icon_menu_removed": "Az ikon eltávolítva az alkalmazásmenüből.",
+        "invite_title": "Ikon hozzáadása?",
+        "invite_text": "Szeretné hozzáadni a program ikonját az alkalmazásmenühöz és az asztalhoz?\n\nKésőbb bármikor hozzáadhatja vagy eltávolíthatja az „{about}” ablak alján lévő gombbal.",
+        "invite_add": "Hozzáadás",
+        "invite_never": "Ne kérdezze többé",
+    },
+    "ru": {
+        "about_desktop_add": "Добавить значок на рабочий стол", "about_desktop_remove": "Убрать значок с рабочего стола",
+        "desktop_added": "Значок добавлен в папку «Рабочий стол».", "desktop_removed": "Значок убран с рабочего стола.",
+        "desktop_missing": "Папка «Рабочий стол» не найдена: значок не создан.", "desktop_err": "Ошибка: {error}",
+        "desktop_hidden": "GNOME не показывает значки рабочего стола без расширения «Desktop Icons»: ярлык существует, но остаётся невидимым.",
+        "icon_menu_added": "Значок добавлен в меню приложений.",
+        "icon_menu_removed": "Значок убран из меню приложений.",
+        "invite_title": "Добавить значок?",
+        "invite_text": "Хотите добавить значок программы в меню приложений и на рабочий стол?\n\nПозже его всегда можно добавить или убрать кнопкой внизу окна «{about}».",
+        "invite_add": "Добавить",
+        "invite_never": "Больше не спрашивать",
+    },
+    "hi": {
+        "about_desktop_add": "डेस्कटॉप पर आइकन जोड़ें", "about_desktop_remove": "डेस्कटॉप से आइकन हटाएँ",
+        "desktop_added": "आइकन डेस्कटॉप फ़ोल्डर में जोड़ा गया।", "desktop_removed": "आइकन डेस्कटॉप से हटाया गया।",
+        "desktop_missing": "डेस्कटॉप फ़ोल्डर नहीं मिला: आइकन नहीं बना।", "desktop_err": "विफल: {error}",
+        "desktop_hidden": "GNOME “Desktop Icons” एक्सटेंशन के बिना डेस्कटॉप आइकन नहीं दिखाता: शॉर्टकट मौजूद है, पर दिखाई नहीं देगा।",
+        "icon_menu_added": "आइकन एप्लिकेशन मेनू में जोड़ा गया।",
+        "icon_menu_removed": "आइकन एप्लिकेशन मेनू से हटाया गया।",
+        "invite_title": "आइकन जोड़ें?",
+        "invite_text": "क्या आप प्रोग्राम का आइकन एप्लिकेशन मेनू और डेस्कटॉप पर जोड़ना चाहते हैं?\n\nआप इसे बाद में “{about}” विंडो के नीचे दिए बटन से कभी भी जोड़ या हटा सकते हैं।",
+        "invite_add": "जोड़ें",
+        "invite_never": "फिर न पूछें",
+    },
+    "zh": {
+        "about_desktop_add": "在桌面添加图标", "about_desktop_remove": "从桌面移除图标",
+        "desktop_added": "图标已添加到桌面文件夹。", "desktop_removed": "图标已从桌面移除。",
+        "desktop_missing": "未找到桌面文件夹：未创建图标。", "desktop_err": "失败：{error}",
+        "desktop_hidden": "没有“Desktop Icons”扩展时，GNOME 不显示桌面图标：快捷方式已存在，但看不到。",
+        "icon_menu_added": "图标已添加到应用程序菜单。",
+        "icon_menu_removed": "图标已从应用程序菜单移除。",
+        "invite_title": "添加图标？",
+        "invite_text": "是否将程序图标添加到应用程序菜单和桌面？\n\n以后您随时可以通过“{about}”窗口底部的按钮添加或移除。",
+        "invite_add": "添加",
+        "invite_never": "不再询问",
+    },
+    "vi": {
+        "about_desktop_add": "Thêm biểu tượng vào màn hình nền", "about_desktop_remove": "Gỡ biểu tượng khỏi màn hình nền",
+        "desktop_added": "Đã thêm biểu tượng vào thư mục màn hình nền.", "desktop_removed": "Đã gỡ biểu tượng khỏi màn hình nền.",
+        "desktop_missing": "Không tìm thấy thư mục màn hình nền: chưa tạo biểu tượng.", "desktop_err": "Lỗi: {error}",
+        "desktop_hidden": "GNOME không hiển thị biểu tượng màn hình nền nếu thiếu tiện ích mở rộng “Desktop Icons”: lối tắt vẫn tồn tại nhưng không thấy được.",
+        "icon_menu_added": "Đã thêm biểu tượng vào menu ứng dụng.",
+        "icon_menu_removed": "Đã gỡ biểu tượng khỏi menu ứng dụng.",
+        "invite_title": "Thêm biểu tượng?",
+        "invite_text": "Bạn có muốn thêm biểu tượng của chương trình vào menu ứng dụng và màn hình nền không?\n\nBạn luôn có thể thêm hoặc gỡ biểu tượng sau này bằng nút ở cuối cửa sổ “{about}”.",
+        "invite_add": "Thêm",
+        "invite_never": "Không hỏi lại",
+    },
+    "ko": {
+        "about_desktop_add": "바탕 화면에 아이콘 추가", "about_desktop_remove": "바탕 화면에서 아이콘 제거",
+        "desktop_added": "아이콘을 바탕 화면 폴더에 추가했습니다.", "desktop_removed": "아이콘을 바탕 화면에서 제거했습니다.",
+        "desktop_missing": "바탕 화면 폴더를 찾을 수 없습니다. 아이콘을 만들지 않았습니다.", "desktop_err": "실패: {error}",
+        "desktop_hidden": "GNOME은 “Desktop Icons” 확장 기능이 없으면 바탕 화면 아이콘을 표시하지 않습니다. 바로 가기는 있지만 보이지 않습니다.",
+        "icon_menu_added": "아이콘을 응용 프로그램 메뉴에 추가했습니다.",
+        "icon_menu_removed": "아이콘을 응용 프로그램 메뉴에서 제거했습니다.",
+        "invite_title": "아이콘을 추가할까요?",
+        "invite_text": "프로그램 아이콘을 응용 프로그램 메뉴와 바탕 화면에 추가하시겠습니까?\n\n나중에 “{about}” 창 아래쪽의 버튼으로 언제든지 추가하거나 제거할 수 있습니다.",
+        "invite_add": "추가",
+        "invite_never": "다시 묻지 않기",
+    },
+    "ja": {
+        "about_desktop_add": "デスクトップにアイコンを追加", "about_desktop_remove": "デスクトップからアイコンを削除",
+        "desktop_added": "アイコンをデスクトップフォルダーに追加しました。", "desktop_removed": "アイコンをデスクトップから削除しました。",
+        "desktop_missing": "デスクトップフォルダーが見つかりません。アイコンは作成されませんでした。", "desktop_err": "失敗：{error}",
+        "desktop_hidden": "GNOME は「Desktop Icons」拡張機能がないとデスクトップのアイコンを表示しません。ショートカットは存在しますが、見えないままです。",
+        "icon_menu_added": "アイコンをアプリケーションメニューに追加しました。",
+        "icon_menu_removed": "アイコンをアプリケーションメニューから削除しました。",
+        "invite_title": "アイコンを追加しますか？",
+        "invite_text": "プログラムのアイコンをアプリケーションメニューとデスクトップに追加しますか？\n\n後から「{about}」ウィンドウ下部のボタンでいつでも追加・削除できます。",
+        "invite_add": "追加",
+        "invite_never": "今後は確認しない",
+    },
+    "fil": {
+        "about_desktop_add": "Idagdag ang icon sa desktop", "about_desktop_remove": "Alisin ang icon sa desktop",
+        "desktop_added": "Naidagdag ang icon sa folder ng Desktop.", "desktop_removed": "Inalis ang icon sa desktop.",
+        "desktop_missing": "Hindi makita ang folder ng Desktop: hindi nagawa ang icon.", "desktop_err": "Nabigo: {error}",
+        "desktop_hidden": "Hindi ipinapakita ng GNOME ang mga icon sa desktop kung walang extension na “Desktop Icons”: umiiral ang shortcut ngunit nananatiling hindi nakikita.",
+        "icon_menu_added": "Naidagdag ang icon sa menu ng mga application.",
+        "icon_menu_removed": "Inalis ang icon sa menu ng mga application.",
+        "invite_title": "Magdagdag ng icon?",
+        "invite_text": "Gusto mo bang idagdag ang icon ng programa sa menu ng mga application at sa desktop?\n\nMaaari mo itong idagdag o alisin anumang oras gamit ang button sa ibaba ng window na “{about}”.",
+        "invite_add": "Idagdag",
+        "invite_never": "Huwag nang magtanong",
+    },
+}
+
+
 # ── État global ────────────────────────────────────────────────────────────────
 current_lang    = lang_from_argv() or "fr"
 history         = []
@@ -85,7 +273,11 @@ _label_bindings = []
 
 
 def t(key):
-    return T[current_lang].get(key, T["fr"].get(key, f"[{key}]"))
+    """Texte de l'interface : translations.py, puis les textes Linux de la langue, puis le français et l'anglais."""
+    for table in (T.get(current_lang, {}), LINUX_TEXTS.get(current_lang, {}), T["fr"], LINUX_TEXTS["en"]):
+        if key in table:
+            return table[key]
+    return f"[{key}]"
 
 
 def register(widget, key, attr="text"):
@@ -307,8 +499,13 @@ def install_font(code, progress=None):
     return not (result[1] and result[0] / result[1] > FONT_MISSING_THRESHOLD)
 
 def relaunch_command(code):
-    """Commande qui relance le logiciel dans la langue `code` (script Python ou exécutable PyInstaller)."""
+    """Commande qui relance le logiciel dans la langue `code` (script Python, exécutable PyInstaller ou AppImage).
+    Depuis un AppImage, sys.executable est dans un montage temporaire qui disparaît quand ce processus se termine :
+    on relance le fichier AppImage lui-même (variable APPIMAGE)."""
     if getattr(sys, "frozen", False):
+        appimage = os.environ.get("APPIMAGE", "")
+        if appimage and os.path.isfile(appimage):
+            return [appimage, "--lang", code]
         return [sys.executable, "--lang", code]
     return [sys.executable, os.path.abspath(sys.argv[0]), "--lang", code]
 
@@ -423,6 +620,311 @@ def show_font_dialog(code):
     win.bind("<Escape>", lambda e: win.destroy())
     win._state, win._btn_install, win._btn_restart, win._status = state, btn_install, btn_restart, status
 
+    win.update_idletasks()
+    x = root.winfo_rootx() + (root.winfo_width()  - win.winfo_width())  // 2
+    y = root.winfo_rooty() + (root.winfo_height() - win.winfo_height()) // 2
+    win.geometry(f"+{max(x, 0)}+{max(y, 0)}")
+    win.focus_set()
+    return win
+
+
+# ── Icône du logiciel : menu des applications et bureau (Linux) ───────────────
+# Bouton au bas de la fenêtre « À propos » (et invitation à la première ouverture) : ajoute ou retire l'icône du
+# logiciel, sans droits administrateur. Depuis l'AppImage ou l'exécutable autonome : le programme est copié sous
+# $XDG_DATA_HOME/calculateur-masques/app (il survit si le fichier téléchargé est déplacé), avec une entrée du menu des
+# applications et un raccourci dans le dossier Bureau. Depuis le paquet .deb : pareil, mais le programme n'est pas
+# copié (le paquet l'installe) ; son lanceur système est masqué (NoDisplay) et l'entrée de menu de l'utilisateur le
+# remplace, avec TryExec : si le paquet est désinstallé, l'entrée disparaît des menus. Aucune icône n'apparaît donc
+# d'elle-même. Tout fichier écrit porte SHORTCUT_MARKER : on ne supprime jamais un fichier qui n'est pas le nôtre.
+# Les réglages et la police téléchargée ne sont jamais touchés.
+SHORTCUT_MARKER = "X-CalculateurMasques-Shortcut=1"
+OLD_MARKERS = ("X-CalculateurMasques-Installer=1",)   # marque des essais d'une version précédente
+DEB_LIB_DIR = "/usr/lib/calculateur-masques"
+APP_ID      = "calculateur-masques"
+
+class DesktopIconError(Exception):
+    """Échec de l'ajout ou du retrait de l'icône ; `key` est une clé de texte, `params` ses valeurs."""
+    def __init__(self, key, **params):
+        super().__init__(key)
+        self.key, self.params = key, params
+    def text(self):
+        return t(self.key).format(**self.params)
+
+def xdg_data_home():
+    return os.environ.get("XDG_DATA_HOME") or os.path.join(os.path.expanduser("~"), ".local", "share")
+
+def config_path():
+    base = os.environ.get("XDG_CONFIG_HOME") or os.path.join(os.path.expanduser("~"), ".config")
+    return os.path.join(base, APP_ID, "config.json")
+
+def load_config():
+    try:
+        with open(config_path(), encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+def save_config(cfg):
+    """Réglages : seulement « icon_invite » ("never" après « Ne plus demander » ou un retrait de l'icône)."""
+    try:
+        os.makedirs(os.path.dirname(config_path()), exist_ok=True)
+        with open(config_path(), "w", encoding="utf-8", newline="\n") as f:
+            json.dump(cfg, f, ensure_ascii=False, indent=2)
+        return True
+    except OSError:
+        return False
+
+def install_kind():
+    """"appimage", "deb", "binary" (exécutable autonome « onefile »), "folder" (dossier PyInstaller) ou "source"."""
+    if not getattr(sys, "frozen", False):
+        return "source"
+    appimage = os.environ.get("APPIMAGE", "")
+    if appimage and os.path.isfile(appimage):
+        return "appimage"
+    exe = os.path.realpath(sys.executable)
+    if exe.startswith(DEB_LIB_DIR + "/"):
+        return "deb"
+    if os.path.isdir(os.path.join(os.path.dirname(exe), "_internal")):
+        return "folder"
+    return "binary"
+
+def icon_path():
+    return os.path.join(xdg_data_home(), "icons", "hicolor", "512x512", "apps", APP_ID + ".png")
+
+def menu_launcher_path():
+    return os.path.join(xdg_data_home(), "applications", APP_ID + ".desktop")
+
+def app_copy_dir():
+    return os.path.join(xdg_data_home(), APP_ID, "app")
+
+def desktop_exec_quote(path):
+    """Chemin prêt pour la clé Exec d'un .desktop : entre guillemets, avec les échappements de la spécification
+    (", `, $ et la barre inverse précédés d'une barre, puis chaque barre doublée dans le fichier ; % devient %%)."""
+    quoted = path.replace("\\", "\\\\").replace('"', '\\"').replace("`", "\\`").replace("$", "\\$")
+    return '"' + quoted.replace("\\", "\\\\").replace("%", "%%") + '"'
+
+def shortcut_text(exec_value, icon, try_exec=None):
+    """Contenu d'un .desktop. `try_exec` (paquet .deb) : si le programme est désinstallé, les menus ignorent l'entrée."""
+    if "\n" in exec_value or "\n" in icon:
+        raise DesktopIconError("desktop_err", error="invalid path")
+    return "\n".join([
+        "[Desktop Entry]", "Type=Application", "Version=1.0",
+        "Name=Calculateur de Masques IPv4", "Name[en]=IPv4 Subnet Calculator", "GenericName=Subnet calculator",
+        "Comment=Calcul de masques, sous-réseaux et broadcast IPv4",
+        "Comment[en]=IPv4 subnet mask, subnetting and broadcast calculator",
+        f"Exec={exec_value}", *([f"TryExec={try_exec}"] if try_exec else []), f"Icon={icon}", "Terminal=false",
+        "Categories=Network;Utility;", "Keywords=réseau;subnet;masque;IPv4;network;mask;", "StartupNotify=true",
+        SHORTCUT_MARKER, ""])
+
+def _run_quiet(cmd):
+    """Lance un petit utilitaire du bureau s'il existe ; un échec n'a pas d'importance."""
+    if not shutil.which(cmd[0]):
+        return ""
+    try:
+        return subprocess.run(cmd, capture_output=True, text=True, timeout=10).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return ""
+
+def linux_desktop_dirs():
+    """Dossiers « Bureau » qui existent, le plus fiable (xdg-user-dir) d'abord."""
+    home = os.path.expanduser("~")
+    found = []
+    for path in (_run_quiet(["xdg-user-dir", "DESKTOP"]), os.path.join(home, "Desktop"), os.path.join(home, "Bureau")):
+        if path and os.path.isabs(path) and os.path.isdir(path) and path not in found:
+            found.append(path)
+    return found
+
+def _is_ours(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            content = f.read()
+    except OSError:
+        return False
+    return SHORTCUT_MARKER in content or any(m in content for m in OLD_MARKERS)
+
+def _same_file(a, b):
+    try:
+        return os.path.exists(a) and os.path.exists(b) and os.path.samefile(a, b)
+    except OSError:
+        return False
+
+def _copy_replace_file(src, dst):
+    if _same_file(src, dst):
+        return                        # déjà lancé depuis la copie installée : rien à recopier
+    part = dst + ".part"
+    shutil.copy2(src, part)
+    os.chmod(part, 0o755)
+    os.replace(part, dst)
+
+def _write_launcher(path, text):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(text)
+    os.chmod(path, 0o755)
+
+def desktop_shortcut_present(desktop_dirs=None):
+    dirs = linux_desktop_dirs() if desktop_dirs is None else desktop_dirs
+    return any(_is_ours(os.path.join(d, APP_ID + ".desktop")) for d in dirs)
+
+def icon_present(desktop_dirs=None):
+    """Une icône de nous existe : raccourci du Bureau ou entrée du menu des applications."""
+    return desktop_shortcut_present(desktop_dirs) or _is_ours(menu_launcher_path())
+
+def gnome_hides_desktop_icons():
+    """Vrai si l'environnement est GNOME sans extension d'icônes du bureau (Desktop Icons, DING…) : un raccourci posé
+    dans le dossier Bureau y est alors invisible. Faux en cas de doute."""
+    if "gnome" not in os.environ.get("XDG_CURRENT_DESKTOP", "").lower() or not shutil.which("gnome-extensions"):
+        return False
+    try:
+        done = subprocess.run(["gnome-extensions", "list", "--enabled"], capture_output=True, text=True, timeout=10)
+    except (OSError, subprocess.SubprocessError):
+        return False
+    if done.returncode != 0:
+        return False
+    enabled = done.stdout.lower()
+    return not any(name in enabled for name in ("desktop-icons", "ding", "desktop-icons-ng"))
+
+def icon_add(kind=None, desktop_dirs=None, icon_source=None):
+    """Ajoute l'icône. Retourne {"menu": entrée de menu écrite, "shortcut": chemin du raccourci ou None, "missing":
+    dossier Bureau introuvable, "hidden": GNOME n'affichera pas le raccourci} ; DesktopIconError en cas d'échec."""
+    kind = kind or install_kind()
+    if kind not in ("appimage", "binary", "deb"):
+        raise DesktopIconError("desktop_err", error="unsupported")
+    dirs = linux_desktop_dirs() if desktop_dirs is None else desktop_dirs
+    result = {"menu": False, "shortcut": None, "missing": False, "hidden": False}
+    try:
+        if kind == "deb":
+            # le paquet fournit la commande et l'icône du thème, et un lanceur MASQUÉ (NoDisplay) : l'entrée de menu de
+            # l'utilisateur (même nom de fichier, dossier prioritaire) le remplace tant que l'icône est ajoutée
+            text = shortcut_text(APP_ID, APP_ID, try_exec=APP_ID)
+        else:
+            folder = app_copy_dir()
+            os.makedirs(folder, exist_ok=True)
+            if kind == "appimage":
+                program = os.path.join(folder, "CalculateurMasques.AppImage")
+                _copy_replace_file(os.environ["APPIMAGE"], program)
+            else:
+                program = os.path.join(folder, "CalculateurMasquesIPv4")
+                _copy_replace_file(os.path.realpath(sys.executable), program)
+            icon = icon_path()
+            os.makedirs(os.path.dirname(icon), exist_ok=True)
+            shutil.copy2(icon_source or resource_path("icon.png"), icon)
+            text = shortcut_text(desktop_exec_quote(program), icon)
+        _write_launcher(menu_launcher_path(), text)
+        result["menu"] = True
+        _run_quiet(["update-desktop-database", os.path.dirname(menu_launcher_path())])
+        if dirs:
+            path = os.path.join(dirs[0], APP_ID + ".desktop")
+            _write_launcher(path, text)
+            _run_quiet(["gio", "set", path, "metadata::trusted", "true"])   # GNOME : lancement autorisé
+            result["shortcut"], result["hidden"] = path, gnome_hides_desktop_icons()
+        else:
+            result["missing"] = True
+    except OSError as exc:
+        raise DesktopIconError("desktop_err", error=exc.strerror or exc)
+    return result
+
+def icon_remove(desktop_dirs=None):
+    """Retire tout ce que l'ajout a fait (seulement les fichiers de nous). Retourne {"menu": bool, "shortcut": bool}."""
+    dirs = linux_desktop_dirs() if desktop_dirs is None else desktop_dirs
+    removed = {"menu": False, "shortcut": False}
+    try:
+        for d in dirs:
+            path = os.path.join(d, APP_ID + ".desktop")
+            if _is_ours(path):
+                os.remove(path)
+                removed["shortcut"] = True
+        if _is_ours(menu_launcher_path()):
+            os.remove(menu_launcher_path())
+            removed["menu"] = True
+            if os.path.isfile(icon_path()) and not os.path.islink(icon_path()):
+                os.remove(icon_path())
+            shutil.rmtree(app_copy_dir(), ignore_errors=True)
+            _run_quiet(["update-desktop-database", os.path.dirname(menu_launcher_path())])
+    except OSError as exc:
+        raise DesktopIconError("desktop_err", error=exc.strerror or exc)
+    return removed
+
+def icon_add_message(res):
+    """(texte, réussi) d'un ajout : une ligne par chose faite, et l'avertissement GNOME si le raccourci sera invisible."""
+    lines = []
+    if res["menu"]:
+        lines.append(t("icon_menu_added"))
+    if res["shortcut"]:
+        lines.append(t("desktop_added"))
+        if res["hidden"]:
+            lines.append(t("desktop_hidden"))
+    elif res["missing"]:
+        lines.append(t("desktop_missing"))
+    return "\n".join(lines), bool(res["menu"] or res["shortcut"])
+
+def icon_remove_message(res):
+    lines = ([t("icon_menu_removed")] if res["menu"] else []) + ([t("desktop_removed")] if res["shortcut"] else [])
+    return "\n".join(lines) or t("desktop_removed")
+
+def icon_invite_wanted(kind=None, cfg=None, desktop_dirs=None):
+    """Faut-il proposer l'icône au démarrage ? Seulement depuis l'AppImage, l'exécutable autonome ou le .deb, si aucune
+    icône n'existe et que l'utilisateur n'a pas répondu « Ne plus demander » (ni retiré l'icône lui-même)."""
+    kind = kind or install_kind()
+    if kind not in ("appimage", "binary", "deb"):
+        return False
+    cfg = load_config() if cfg is None else cfg
+    if cfg.get("icon_invite") == "never":
+        return False
+    return not icon_present(desktop_dirs)
+
+def show_icon_invite():
+    """Fenêtre de la première ouverture : [Ajouter] [Ne plus demander] [Fermer]. « Fermer » ne retient rien : la question
+    revient au prochain lancement."""
+    kind = install_kind()
+    win = tk.Toplevel(root)
+    win.title(t("invite_title"))
+    win.configure(bg=DARK_BG)
+    win.resizable(False, False)
+    win.transient(root)
+
+    def text(msg, fg=TEXT, font=None, pady=(0, 8)):
+        lbl = tk.Label(win, text=msg, bg=DARK_BG, fg=fg, font=font or best_font(10),
+                       wraplength=480, justify="left", anchor="w")
+        lbl.pack(fill="x", padx=24, pady=pady)
+        return lbl
+
+    text(t("invite_title"), font=best_font(12, bold=True), pady=(20, 8))
+    text(t("invite_text").format(about=t("btn_about")))
+    lbl_status = text("", fg=SUBTEXT, font=best_font(10, italic=True), pady=(0, 6))
+
+    def do_add():
+        try:
+            msg, ok = icon_add_message(icon_add(kind))
+        except DesktopIconError as exc:
+            msg, ok = exc.text(), False
+        lbl_status.config(text=msg, fg=SUCCESS if ok else ERROR)
+        btn_add.config(state="disabled")
+        btn_never.config(state="disabled")
+
+    def do_never():
+        cfg = load_config()
+        cfg["icon_invite"] = "never"
+        save_config(cfg)
+        win.destroy()
+
+    buttons = tk.Frame(win, bg=DARK_BG)
+    buttons.pack(pady=(4, 20))
+    btn_add = tk.Button(buttons, text=t("invite_add"), command=do_add, bg=ACCENT, fg="white",
+                        font=best_font(10, bold=True), relief="flat", padx=16, pady=5, cursor="hand2",
+                        activebackground=ACCENT2, activeforeground="white")
+    btn_add.pack(side="left", padx=6)
+    btn_never = tk.Button(buttons, text=t("invite_never"), command=do_never, bg=PANEL_BG, fg=TEXT,
+                          font=best_font(10), relief="flat", padx=14, pady=5, cursor="hand2",
+                          activebackground=BORDER, activeforeground=TEXT)
+    btn_never.pack(side="left", padx=6)
+    btn_close = tk.Button(buttons, text=t("about_close"), command=win.destroy, bg=PANEL_BG, fg=SUBTEXT,
+                          font=best_font(10), relief="flat", padx=14, pady=5, cursor="hand2",
+                          activebackground=BORDER, activeforeground=TEXT)
+    btn_close.pack(side="left", padx=6)
+    win.bind("<Escape>", lambda e: win.destroy())
+    win._parts = {"add": btn_add, "never": btn_never, "close": btn_close, "status": lbl_status}
     win.update_idletasks()
     x = root.winfo_rootx() + (root.winfo_width()  - win.winfo_width())  // 2
     y = root.winfo_rooty() + (root.winfo_height() - win.winfo_height()) // 2
@@ -768,7 +1270,39 @@ def show_about():
                           bg=ACCENT, fg="white", font=best_font(10),
                           relief="flat", padx=16, pady=4, cursor="hand2",
                           activebackground=ACCENT2, activeforeground="white")
-    btn_close.pack(pady=(0, 22))
+    kind = install_kind()
+    if kind in ("appimage", "deb", "binary"):
+        btn_close.pack(pady=(0, 10))
+        row = tk.Frame(win, bg=DARK_BG)
+        row.pack(fill="x", padx=14, pady=(0, 10))
+        lbl_status = tk.Label(row, text="", bg=DARK_BG, fg=SUBTEXT, font=best_font(9, italic=True),
+                              wraplength=380, justify="left", anchor="w")
+
+        def toggle_label():
+            return t("about_desktop_remove" if icon_present() else "about_desktop_add")
+
+        def toggle_icon():
+            try:
+                if icon_present():
+                    lbl_status.config(text=icon_remove_message(icon_remove()), fg=SUCCESS)
+                    cfg = load_config()
+                    cfg["icon_invite"] = "never"          # il a choisi : on ne lui reproposera pas l'icône
+                    save_config(cfg)
+                else:
+                    msg, ok = icon_add_message(icon_add(kind))
+                    lbl_status.config(text=msg, fg=SUCCESS if ok else ERROR)
+            except DesktopIconError as exc:
+                lbl_status.config(text=exc.text(), fg=ERROR)
+            btn_icon.config(text=toggle_label())
+
+        btn_icon = tk.Button(row, text=toggle_label(), command=toggle_icon, bg=PANEL_BG, fg=SUBTEXT,
+                             font=best_font(8), relief="flat", padx=8, pady=2, cursor="hand2",
+                             activebackground=BORDER, activeforeground=TEXT)
+        btn_icon.pack(side="left", anchor="n")      # le bouton ne bouge pas quand un message de plusieurs lignes apparaît
+        lbl_status.pack(side="left", padx=(10, 0), fill="x", expand=True)
+        win._icon_parts = {"button": btn_icon, "status": lbl_status}
+    else:
+        btn_close.pack(pady=(0, 22))
     win.bind("<Escape>", lambda e: win.destroy())
 
     win.update_idletasks()
@@ -1313,4 +1847,6 @@ def _apply_result_conv_labels():
 entry_ip.focus()
 if language_needs_font(current_lang):   # lancé avec --lang ko sans la police : on rouvre la boîte
     root.after(400, lambda: show_font_dialog(current_lang))
+elif lang_from_argv() is None and icon_invite_wanted():   # première ouverture : proposer l'icône (pas après un redémarrage)
+    root.after(700, show_icon_invite)
 root.mainloop()

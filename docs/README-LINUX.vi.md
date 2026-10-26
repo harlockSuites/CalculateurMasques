@@ -67,7 +67,25 @@ Kho mã: <https://github.com/harlockSuites/CalculateurMasques/tree/Linux>
 Việc đổi ngôn ngữ diễn ra ngay lập tức, không cần khởi động lại.
 
 ### Nút Giới thiệu
-Bên cạnh bộ chọn ngôn ngữ, nút này mở một cửa sổ có biểu ngữ và thông báo “Phần mềm tiện ích ngoại tuyến này miễn phí và mã nguồn mở.”, được dịch sang cả 15 ngôn ngữ. Nhấn phím Esc hoặc nút Đóng để đóng cửa sổ.
+Bên cạnh bộ chọn ngôn ngữ, nút này mở một cửa sổ có biểu ngữ và thông báo “Phần mềm tiện ích ngoại tuyến này miễn phí và mã nguồn mở.”, được dịch sang cả 15 ngôn ngữ. Nhấn phím Esc hoặc nút Đóng để đóng cửa sổ. Từ gói `.deb`, AppImage hoặc tệp thực thi độc lập, một nút nhỏ ở góc dưới bên trái của cửa sổ này sẽ thêm hoặc gỡ biểu tượng của phần mềm (xem bên dưới).
+
+### Biểu tượng menu và màn hình nền
+Từ gói `.deb`, AppImage hoặc tệp thực thi độc lập, một cửa sổ **“Thêm biểu tượng?”** mở ra ở lần mở đầu tiên, với ba nút: **Thêm**, **Không hỏi lại** và **Đóng** (nút này không ghi nhớ gì: câu hỏi sẽ xuất hiện lại ở lần khởi chạy sau). Cửa sổ nhắc rằng sau đó có thể thêm hoặc gỡ biểu tượng bằng nút ở cuối cửa sổ “Giới thiệu”.
+- **Thêm** tạo mục trong **menu ứng dụng** và biểu tượng trong **thư mục màn hình nền**, không cần quyền quản trị. Với AppImage và tệp thực thi độc lập, phần mềm trước tiên được sao chép vào `~/.local/share/calculateur-masques/app` (biểu tượng vẫn dùng được nếu bạn di chuyển tệp đã tải về); với `.deb` thì không sao chép gì.
+- **Không hỏi lại** ghi lựa chọn vào `~/.config/calculateur-masques/config.json`; việc gỡ biểu tượng bằng nút của “Giới thiệu” cũng ghi lại lựa chọn này.
+- `.deb` không thêm biểu tượng nào khi cài đặt: trình khởi chạy của nó bị ẩn, biểu tượng chỉ xuất hiện khi được yêu cầu.
+
+> **GNOME** không hiển thị biểu tượng của thư mục màn hình nền nếu thiếu tiện ích mở rộng “Desktop Icons”: biểu tượng màn hình nền khi đó vẫn tồn tại nhưng không thấy được (phần mềm có thông báo điều này). Mục trong menu ứng dụng thì vẫn hiển thị.
+
+Để gỡ tất cả bằng tay:
+
+```bash
+rm -r ~/.local/share/calculateur-masques
+rm -f ~/.local/share/applications/calculateur-masques.desktop
+rm -f ~/.local/share/icons/hicolor/512x512/apps/calculateur-masques.png
+rm -f ~/Bureau/calculateur-masques.desktop ~/Desktop/calculateur-masques.desktop
+rm -r ~/.config/calculateur-masques
+```
 
 ### Tiếng Hàn và phông chữ
 Tiếng Hàn xuất hiện trong danh sách dưới tên **Korean** (bằng tiếng Anh, vì “한국어” sẽ hiện thành các ô vuông nếu không có phông chữ tiếng Hàn). Nếu hệ thống không có phông nào, việc chọn ngôn ngữ này sẽ mở một hộp thoại **bằng tiếng Anh** (“Font needed”) giải thích nhu cầu này và đề xuất:
@@ -120,16 +138,54 @@ Script tự động kiểm tra sự có mặt của Python và tkinter, và hi�
 python3 calculateur_masques.py
 ```
 
+### Qua gói `.deb` (Debian, Ubuntu, Linux Mint)
+
+Các tệp biên dịch sẵn (`.deb`, AppImage, tệp thực thi độc lập và `SHA256SUMS-linux.txt`) được phát hành ở dạng bản xem trước trong [Releases](https://github.com/harlockSuites/CalculateurMasques/releases) của kho mã, dưới nhãn `Linux-v*`; chúng được xây dựng trên Debian 12 (glibc 2.36, Python 3.11, x86-64). Gói này cài phần mềm cho mọi người dùng:
+
+```bash
+sudo apt install ./calculateur-masques_1.0.1_amd64.deb
+calculateur-masques
+```
+
+Việc cài đặt không thêm biểu tượng nào vào menu hay màn hình nền: hãy chạy `calculateur-masques` lần đầu, cửa sổ “Thêm biểu tượng?” sẽ đề xuất việc này. Để gỡ cài đặt:
+
+```bash
+sudo apt remove calculateur-masques
+```
+
+Mục menu do phần mềm thêm sẽ tự biến mất; lối tắt trên màn hình nền thì vẫn còn (vì chỉ là một tệp đơn giản): hãy gỡ nó trước bằng nút của “Giới thiệu”, hoặc bằng tay.
+
+### Qua AppImage
+
+Một tệp duy nhất, không cần cài đặt:
+
+```bash
+chmod +x CalculateurMasques-1.0.1-x86_64.AppImage
+./CalculateurMasques-1.0.1-x86_64.AppImage
+```
+
+Nếu hệ thống không có FUSE:
+
+```bash
+./CalculateurMasques-1.0.1-x86_64.AppImage --appimage-extract-and-run
+```
+
 ### Qua tệp thực thi độc lập
 
-Một tệp thực thi độc lập (PyInstaller) được biên dịch chỉ bằng một lệnh (xem « Biên dịch tệp thực thi độc lập » bên dưới). Một bản biên dịch sẵn được phát hành (ở dạng bản xem trước) trong [Releases](https://github.com/harlockSuites/CalculateurMasques/releases) của kho mã, dưới nhãn `Linux-v*`; nó được xây dựng trên Debian 12 (glibc 2.36, Python 3.11, x86-64):
+Một tệp thực thi độc lập (PyInstaller) được biên dịch chỉ bằng một lệnh (xem « Biên dịch tệp thực thi độc lập » bên dưới); một bản biên dịch sẵn nằm trong Releases:
 
 ```bash
 chmod +x CalculateurMasquesIPv4
 ./CalculateurMasquesIPv4
 ```
 
-> **Lưu ý về glibc**: tệp nhị phân này được xây dựng trên Debian 12. Nó đã được kiểm chứng trên bản phân phối đó; nó cũng nên chạy được trên các bản phân phối có glibc 2.36 hoặc mới hơn, nhưng không chạy được trên bản cũ hơn. Trong trường hợp đó, hãy biên dịch lại từ mã nguồn.
+Để kiểm tra các tệp đã tải về:
+
+```bash
+sha256sum -c SHA256SUMS-linux.txt
+```
+
+> **Lưu ý về glibc**: các tệp này được xây dựng trên Debian 12. Chúng đã được kiểm chứng trên bản phân phối đó; chúng cũng nên chạy được trên các bản phân phối có glibc 2.36 hoặc mới hơn, nhưng không chạy được trên bản cũ hơn. Trong trường hợp đó, hãy biên dịch lại từ mã nguồn.
 
 ---
 
@@ -174,6 +230,17 @@ Tệp thực thi sẽ được tạo trong `./dist/CalculateurMasquesIPv4`. Các
 
 > **Lưu ý:** một tệp nhị phân Linux biên dịch trên Ubuntu không nhất thiết chạy được trên Arch hay Fedora do khác biệt về phiên bản glibc. Hãy biên dịch trên bản phân phối đích hoặc dùng một image Docker của bản phân phối nhắm tới.
 
+### Xây dựng `.deb` và AppImage
+
+Trên Debian hoặc Ubuntu, với PyInstaller và `appimagetool` có trong PATH, script trước tiên xây dựng một thư mục PyInstaller, rồi cả hai gói trong `dist/`:
+
+```bash
+python3 packaging/build_linux_packages.py
+python3 packaging/build_linux_packages.py --only deb
+```
+
+Tùy chọn `--only deb` (hoặc `--only appimage`) chỉ xây dựng một trong hai.
+
 ---
 
 ## Cấu trúc tệp
@@ -186,6 +253,9 @@ CalculateurMasques/            (nhánh Linux)
 ├── banner.png                  # Biểu ngữ của cửa sổ Giới thiệu (600 x 200)
 ├── lancer.sh                   # Script khởi chạy có kiểm tra phụ thuộc
 ├── calculateur-masques.desktop # Mục menu cho các môi trường desktop
+├── packaging/                  # Xây dựng .deb và AppImage
+│   ├── build_linux_packages.py # Script xây dựng
+│   └── linux/                  # AppRun, trình khởi chạy, trang man, nhật ký của .deb
 ├── INSTALLER.md                # Hướng dẫn cài đặt chi tiết (bằng tiếng Pháp)
 ├── LICENSE                     # Giấy phép MIT
 ├── README-LINUX.md             # Hướng dẫn này, bằng tiếng Pháp
@@ -202,7 +272,7 @@ CalculateurMasques/            (nhánh Linux)
 | Con lăn chuột | `MouseWheel` (WinAPI) | `Button-4` / `Button-5` (X11) + `MouseWheel` (Wayland) |
 | Xuất CSV | UTF-8 có BOM (Excel) | UTF-8 không BOM (chuẩn) |
 | Tệp thực thi | `.exe` độc lập | Tệp nhị phân ELF qua PyInstaller (tùy bản phân phối) |
-| Tích hợp desktop | Lối tắt Windows | Tệp `.desktop` (XDG) |
+| Tích hợp desktop | Lối tắt Windows | Gói `.deb`, AppImage, biểu tượng menu và màn hình nền (tệp `.desktop`, XDG) |
 
 ---
 

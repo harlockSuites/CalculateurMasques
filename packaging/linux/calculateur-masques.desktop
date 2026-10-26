@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Calculateur de Masques IPv4
+Name[en]=IPv4 Subnet Calculator
+GenericName=Subnet calculator
+Comment=Calcul de masques, sous-réseaux et broadcast IPv4
+Comment[en]=IPv4 subnet mask, subnetting and broadcast calculator
+Exec=calculateur-masques
+Icon=calculateur-masques
+Terminal=false
+Categories=Network;Utility;
+Keywords=réseau;subnet;masque;IPv4;network;mask;
+StartupNotify=true

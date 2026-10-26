@@ -67,7 +67,25 @@ IPv4 サブネットマスクを計算するグラフィカルユーティリテ
 言語の切り替えは即座に反映され、再起動は不要です。
 
 ### このソフトについてボタン
-言語セレクターの横にある**このソフトについて**ボタンを押すと、バナーと、15 言語に翻訳されたメッセージ「このオフラインのユーティリティソフトは無料で、オープンソースです。」を表示するウィンドウが開きます。Esc キーまたは**閉じる**ボタンで閉じます。
+言語セレクターの横にある**このソフトについて**ボタンを押すと、バナーと、15 言語に翻訳されたメッセージ「このオフラインのユーティリティソフトは無料で、オープンソースです。」を表示するウィンドウが開きます。Esc キーまたは**閉じる**ボタンで閉じます。`.deb` パッケージ、AppImage、または単体の実行ファイルから起動した場合は、このウィンドウの左下にある小さなボタンで、ソフトウェアのアイコンを追加または削除できます（下記参照）。
+
+### メニューとデスクトップのアイコン
+`.deb` パッケージ、AppImage、または単体の実行ファイルから起動すると、初回起動時に**「アイコンを追加しますか？」**というウィンドウが開き、**追加**、**今後は確認しない**、**閉じる**の 3 つのボタンが表示されます（**閉じる**は何も記憶しません。次回の起動時に再び確認されます）。このウィンドウでは、アイコンは後から「このソフトについて」ウィンドウ下部のボタンで追加・削除できることも案内されます。
+- **追加**は、**アプリケーションメニュー**のエントリと**デスクトップフォルダー**のアイコンを、管理者権限なしで作成します。AppImage と単体の実行ファイルでは、まずソフトウェアが `~/.local/share/calculateur-masques/app` にコピーされます（ダウンロードしたファイルを移動しても、アイコンは残ります）。`.deb` では何もコピーされません。
+- **今後は確認しない**は、この選択を `~/.config/calculateur-masques/config.json` に保存します。「このソフトについて」のボタンでアイコンを削除した場合も、同様に保存されます。
+- `.deb` はインストール時にアイコンを一切追加しません。ランチャーは非表示になっており、アイコンは要求したときにだけ表示されます。
+
+> **GNOME** は「Desktop Icons」拡張機能がないと、デスクトップフォルダーのアイコンを表示しません。その場合、デスクトップのアイコンは存在しますが、見えないままです（ソフトウェアがそのことを知らせます）。アプリケーションメニューのエントリは表示されます。
+
+すべて手作業で削除するには：
+
+```bash
+rm -r ~/.local/share/calculateur-masques
+rm -f ~/.local/share/applications/calculateur-masques.desktop
+rm -f ~/.local/share/icons/hicolor/512x512/apps/calculateur-masques.png
+rm -f ~/Bureau/calculateur-masques.desktop ~/Desktop/calculateur-masques.desktop
+rm -r ~/.config/calculateur-masques
+```
 
 ### 韓国語とフォント
 韓国語は、リスト内では **Korean** という名前で表示されます（英語表記なのは、韓国語フォントがないと「한국어」が四角で表示されてしまうためです）。システムに韓国語フォントが 1 つもない場合、この言語を選ぶと**英語の**ダイアログ（「Font needed」）が開き、必要な理由を説明したうえで、次の選択肢を提示します：
@@ -120,16 +138,54 @@ chmod +x lancer.sh
 python3 calculateur_masques.py
 ```
 
+### `.deb` パッケージから起動（Debian、Ubuntu、Linux Mint）
+
+ビルド済みのファイル（`.deb`、AppImage、単体の実行ファイル、`SHA256SUMS-linux.txt`）は、リポジトリの [Releases](https://github.com/harlockSuites/CalculateurMasques/releases) に、`Linux-v*` というタグでプレリリースとして公開されています。Debian 12（glibc 2.36、Python 3.11、x86-64）上でビルドされています。このパッケージは、すべてのユーザー向けにソフトウェアをインストールします：
+
+```bash
+sudo apt install ./calculateur-masques_1.0.1_amd64.deb
+calculateur-masques
+```
+
+インストール時にメニューやデスクトップへアイコンは追加されません。`calculateur-masques` を一度起動すると、「アイコンを追加しますか？」ウィンドウで追加を提案されます。アンインストールするには：
+
+```bash
+sudo apt remove calculateur-masques
+```
+
+ソフトウェアが追加したメニューエントリは自動的に消えます。デスクトップのショートカットは（単なるファイルなので）残ります。その前に「このソフトについて」のボタンで削除するか、手作業で削除してください。
+
+### AppImage から起動
+
+インストール不要の単一ファイルです：
+
+```bash
+chmod +x CalculateurMasques-1.0.1-x86_64.AppImage
+./CalculateurMasques-1.0.1-x86_64.AppImage
+```
+
+システムに FUSE がない場合：
+
+```bash
+./CalculateurMasques-1.0.1-x86_64.AppImage --appimage-extract-and-run
+```
+
 ### 単体の実行ファイルから起動
 
-単体の実行ファイル（PyInstaller）は、1 つのコマンドでビルドできます（後述の「単体の実行ファイルのビルド」を参照）。ビルド済みのバージョンは、リポジトリの [Releases](https://github.com/harlockSuites/CalculateurMasques/releases) に、`Linux-v*` というタグでプレリリースとして公開されています。Debian 12（glibc 2.36、Python 3.11、x86-64）上でビルドされています：
+単体の実行ファイル（PyInstaller）は、1 つのコマンドでビルドできます（後述の「単体の実行ファイルのビルド」を参照）。ビルド済みのバージョンは Releases にあります：
 
 ```bash
 chmod +x CalculateurMasquesIPv4
 ./CalculateurMasquesIPv4
 ```
 
-> **glibc に関する注意**：このバイナリは Debian 12 上でビルドされています。このディストリビューションでは動作を確認済みです。glibc 2.36 以降のディストリビューションでも動作するはずですが、それより古いものでは動作しません。その場合は、ソースから再ビルドしてください。
+ダウンロードしたファイルを検証するには：
+
+```bash
+sha256sum -c SHA256SUMS-linux.txt
+```
+
+> **glibc に関する注意**：これらのファイルは Debian 12 上でビルドされています。このディストリビューションでは動作を確認済みです。glibc 2.36 以降のディストリビューションでも動作するはずですが、それより古いものでは動作しません。その場合は、ソースから再ビルドしてください。
 
 ---
 
@@ -174,6 +230,17 @@ pyinstaller --onefile --windowed \
 
 > **注意：** Ubuntu でコンパイルした Linux バイナリは、glibc のバージョンの違いにより、Arch や Fedora では動作するとは限りません。対象のディストリビューション上でコンパイルするか、対象ディストリビューションの Docker イメージを使用してください。
 
+### `.deb` と AppImage のビルド
+
+Debian または Ubuntu 上で、PyInstaller と `appimagetool` が PATH にある状態で、このスクリプトはまず PyInstaller のフォルダーをビルドし、次に 2 つのパッケージを `dist/` に生成します：
+
+```bash
+python3 packaging/build_linux_packages.py
+python3 packaging/build_linux_packages.py --only deb
+```
+
+`--only deb`（または `--only appimage`）を指定すると、どちらか一方だけをビルドします。
+
 ---
 
 ## ファイル構成
@@ -186,6 +253,9 @@ CalculateurMasques/            (Linux ブランチ)
 ├── banner.png                  # このソフトについてウィンドウのバナー（600 x 200）
 ├── lancer.sh                   # 依存パッケージを確認する起動スクリプト
 ├── calculateur-masques.desktop # デスクトップ環境向けのメニューエントリ
+├── packaging/                  # .deb と AppImage のビルド
+│   ├── build_linux_packages.py # ビルドスクリプト
+│   └── linux/                  # AppRun、ランチャー、man ページ、.deb の変更履歴
 ├── INSTALLER.md                # 詳細なインストール手順（フランス語）
 ├── LICENSE                     # MIT ライセンス
 ├── README-LINUX.md             # このガイド（フランス語）
@@ -202,7 +272,7 @@ CalculateurMasques/            (Linux ブランチ)
 | マウスホイール | `MouseWheel`（WinAPI） | `Button-4` / `Button-5`（X11）+ `MouseWheel`（Wayland） |
 | CSV 出力 | BOM 付き UTF-8（Excel 対応） | BOM なし UTF-8（標準） |
 | 実行ファイル | 単体の `.exe` | PyInstaller による ELF バイナリ（ディストリビューションに依存） |
-| デスクトップ統合 | Windows のショートカット | `.desktop` ファイル（XDG） |
+| デスクトップ統合 | Windows のショートカット | `.deb` パッケージ、AppImage、メニューとデスクトップのアイコン（`.desktop` ファイル、XDG） |
 
 ---
 

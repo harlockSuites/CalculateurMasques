@@ -67,7 +67,25 @@ L'application est organisée en trois onglets :
 Le changement de langue est instantané, sans redémarrage.
 
 ### Bouton « À propos »
-À côté du sélecteur de langue, il ouvre une fenêtre avec la bannière et le message « Ce logiciel utilitaire hors-ligne est gratuit et open-source. », traduit dans les 15 langues. La touche Échap ou le bouton Fermer la referme.
+À côté du sélecteur de langue, il ouvre une fenêtre avec la bannière et le message « Ce logiciel utilitaire hors-ligne est gratuit et open-source. », traduit dans les 15 langues. La touche Échap ou le bouton Fermer la referme. Depuis le paquet `.deb`, l'AppImage ou l'exécutable autonome, un petit bouton en bas à gauche de cette fenêtre ajoute ou retire l'icône du logiciel (voir ci-dessous).
+
+### Icône du menu et du bureau
+Depuis le paquet `.deb`, l'AppImage ou l'exécutable autonome, une fenêtre **« Ajouter une icône ? »** s'ouvre à la première ouverture, avec trois boutons : **Ajouter**, **Ne plus demander** et **Fermer** (qui ne retient rien : la question reviendra au prochain lancement). Elle rappelle que l'icône pourra ensuite être ajoutée ou retirée avec le bouton en bas de la fenêtre « À propos ».
+- **Ajouter** crée l'entrée du **menu des applications** et l'icône du **dossier Bureau**, sans droits administrateur. Avec l'AppImage et l'exécutable autonome, le logiciel se copie d'abord dans `~/.local/share/calculateur-masques/app` (l'icône survit si vous déplacez le fichier téléchargé) ; avec le `.deb`, rien n'est copié.
+- **Ne plus demander** enregistre le choix dans `~/.config/calculateur-masques/config.json` ; retirer l'icône avec le bouton de « À propos » l'enregistre aussi.
+- Le `.deb` n'ajoute aucune icône à l'installation : son lanceur est masqué, l'icône n'apparaît que sur demande.
+
+> **GNOME** n'affiche pas les icônes du dossier Bureau sans l'extension « Desktop Icons » : l'icône du bureau existe alors, mais reste invisible (le logiciel le signale). L'entrée du menu des applications, elle, est visible.
+
+Pour tout retirer à la main :
+
+```bash
+rm -r ~/.local/share/calculateur-masques
+rm -f ~/.local/share/applications/calculateur-masques.desktop
+rm -f ~/.local/share/icons/hicolor/512x512/apps/calculateur-masques.png
+rm -f ~/Bureau/calculateur-masques.desktop ~/Desktop/calculateur-masques.desktop
+rm -r ~/.config/calculateur-masques
+```
 
 ### Coréen et police
 Le coréen apparaît sous le nom **Korean** dans la liste (en anglais, car « 한국어 » s'afficherait en carrés sans police coréenne). Si le système n'en a aucune, le choisir ouvre une boîte de dialogue **en anglais** (« Font needed ») qui explique le besoin et propose :
@@ -120,16 +138,54 @@ Le script vérifie automatiquement la présence de Python et de tkinter, et affi
 python3 calculateur_masques.py
 ```
 
+### Via le paquet `.deb` (Debian, Ubuntu, Linux Mint)
+
+Les fichiers précompilés (`.deb`, AppImage, exécutable autonome et `SHA256SUMS-linux.txt`) sont publiés en préversion dans les [Releases](https://github.com/harlockSuites/CalculateurMasques/releases) du dépôt, sous une étiquette `Linux-v*` ; ils sont bâtis sur Debian 12 (glibc 2.36, Python 3.11, x86-64). Le paquet installe le logiciel pour tous les utilisateurs :
+
+```bash
+sudo apt install ./calculateur-masques_1.0.1_amd64.deb
+calculateur-masques
+```
+
+L'installation n'ajoute aucune icône au menu ni au Bureau : lancez `calculateur-masques` une première fois, la fenêtre « Ajouter une icône ? » la propose. Pour désinstaller :
+
+```bash
+sudo apt remove calculateur-masques
+```
+
+L'entrée de menu ajoutée par le logiciel disparaît d'elle-même ; le raccourci du Bureau, lui, reste (c'est un simple fichier) : retirez-le avant avec le bouton de « À propos », ou à la main.
+
+### Via l'AppImage
+
+Un seul fichier, sans installation :
+
+```bash
+chmod +x CalculateurMasques-1.0.1-x86_64.AppImage
+./CalculateurMasques-1.0.1-x86_64.AppImage
+```
+
+Si le système n'a pas FUSE :
+
+```bash
+./CalculateurMasques-1.0.1-x86_64.AppImage --appimage-extract-and-run
+```
+
 ### Via un exécutable autonome
 
-Un exécutable autonome (PyInstaller) se compile en une commande (voir « Compiler un exécutable autonome » plus bas). Une version précompilée est publiée (en préversion) dans les [Releases](https://github.com/harlockSuites/CalculateurMasques/releases) du dépôt, sous une étiquette `Linux-v*` ; elle est bâtie sur Debian 12 (glibc 2.36, Python 3.11, x86-64) :
+Un exécutable autonome (PyInstaller) se compile en une commande (voir « Compiler un exécutable autonome » plus bas) ; une version précompilée est dans les Releases :
 
 ```bash
 chmod +x CalculateurMasquesIPv4
 ./CalculateurMasquesIPv4
 ```
 
-> **Réserve glibc** : ce binaire est bâti sur Debian 12. Il est vérifié sur cette distribution ; il doit aussi fonctionner sur les distributions de glibc 2.36 ou plus récente, mais pas sur une plus ancienne. Dans ce cas, recompilez depuis les sources.
+Pour vérifier les fichiers téléchargés :
+
+```bash
+sha256sum -c SHA256SUMS-linux.txt
+```
+
+> **Réserve glibc** : ces fichiers sont bâtis sur Debian 12. Ils sont vérifiés sur cette distribution ; ils doivent aussi fonctionner sur les distributions de glibc 2.36 ou plus récente, mais pas sur une plus ancienne. Dans ce cas, recompilez depuis les sources.
 
 ---
 
@@ -174,6 +230,17 @@ L'exécutable sera généré dans `./dist/CalculateurMasquesIPv4`. Les options `
 
 > **Note :** un binaire Linux compilé sur Ubuntu ne fonctionnera pas nécessairement sur Arch ou Fedora en raison des différences de versions de glibc. Compilez sur la distribution cible ou utilisez une image Docker pour la distribution visée.
 
+### Construire le `.deb` et l'AppImage
+
+Sous Debian ou Ubuntu, avec PyInstaller et `appimagetool` dans le PATH, le script construit d'abord un dossier PyInstaller, puis les deux paquets dans `dist/` :
+
+```bash
+python3 packaging/build_linux_packages.py
+python3 packaging/build_linux_packages.py --only deb
+```
+
+L'option `--only deb` (ou `--only appimage`) ne construit qu'un des deux.
+
 ---
 
 ## Structure des fichiers
@@ -186,6 +253,9 @@ CalculateurMasques/            (branche Linux)
 ├── banner.png                  # Bannière de la fenêtre « À propos » (600 x 200)
 ├── lancer.sh                   # Script de lancement avec vérification des dépendances
 ├── calculateur-masques.desktop # Entrée de menu pour environnements de bureau
+├── packaging/                  # Construction du .deb et de l'AppImage
+│   ├── build_linux_packages.py # Script de construction
+│   └── linux/                  # AppRun, lanceur, page de manuel, journal du .deb
 ├── INSTALLER.md                # Instructions d'installation détaillées (en français)
 ├── LICENSE                     # Licence MIT
 ├── README-LINUX.md             # Ce guide, en français
@@ -202,7 +272,7 @@ CalculateurMasques/            (branche Linux)
 | Molette souris | `MouseWheel` (WinAPI) | `Button-4` / `Button-5` (X11) + `MouseWheel` (Wayland) |
 | Export CSV | UTF-8 avec BOM (Excel) | UTF-8 sans BOM (standard) |
 | Exécutable | `.exe` autonome | Binaire ELF via PyInstaller (dépend de la distrib.) |
-| Intégration bureau | Raccourci Windows | Fichier `.desktop` (XDG) |
+| Intégration bureau | Raccourci Windows | Paquet `.deb`, AppImage, icône du menu et du bureau (fichiers `.desktop`, XDG) |
 
 ---
 
