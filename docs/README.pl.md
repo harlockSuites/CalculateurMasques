@@ -133,7 +133,7 @@ CalculateurMasques\
 
 25 października 2026 r. VirusTotal zgłaszał dla pliku wykonywalnego `CalculateurMasquesIPv4.exe` w wersji 1.0 **5 wykryć na 69 silników**: Arctic Wolf, Bkav Pro, Microsoft, SecureAge i Zillya. Uważamy, że były to **fałszywe alarmy**, częste w przypadku nowego, niepodpisanego cyfrowo programu w Pythonie spakowanego za pomocą PyInstaller. Zgłoszenia fałszywych alarmów wysłano do wszystkich pięciu producentów 25 października 2026 r. **Na dzień 5 listopada 2026 r. ponowna analiza tego samego pliku nie wykazuje już żadnych wykryć (0 na 70 silników).**
 
-Program nie zawiera kodu sieciowego (używa tylko `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` i `os` oraz Pillow do ikony okna), a cały jego kod źródłowy jest publiczny w tym repozytorium. Plik wykonywalny w wersji 1.1 ma inny skrót SHA-256 niż wersja 1.0: jego analiza w VirusTotal nie została jeszcze tu odnotowana.
+Program nie zawiera kodu sieciowego (używa tylko `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` i `os` oraz Pillow do ikony okna), a cały jego kod źródłowy jest publiczny w tym repozytorium. Plik wykonywalny w wersji 1.1 ma inny skrót SHA-256 niż wersja 1.0: na dzień 5 listopada 2026 r. VirusTotal zgłasza dla niego **4 wykrycia na 69 silników** (Arctic Wolf, Bkav Pro, Microsoft i SecureAge), najprawdopodobniej fałszywe alarmy tego samego rodzaju.
 
 Aby zweryfikować pobrany plik:
 

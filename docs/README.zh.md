@@ -133,7 +133,7 @@ CalculateurMasques\
 
 2026 年 10 月 25 日，VirusTotal 对 1.0 版可执行文件 `CalculateurMasquesIPv4.exe` 报告了 **69 个引擎中的 5 个检出**：Arctic Wolf、Bkav Pro、Microsoft、SecureAge 和 Zillya。我们认为这些是**误报**，对于使用 PyInstaller 打包、较新且未经数字签名的 Python 程序来说很常见。我们已于 2026 年 10 月 25 日向这五家厂商提交了误报报告。**截至 2026 年 11 月 5 日，对同一文件的重新分析已不再显示任何检出（70 个引擎中为 0）。**
 
-该程序不包含任何网络代码（只使用 `tkinter`、`ipaddress`、`csv`、`datetime`、`math`、`sys` 和 `os`，另外用 Pillow 显示窗口图标），其全部源代码都公开在本仓库中。1.1 版可执行文件的 SHA-256 哈希与 1.0 版不同：其 VirusTotal 分析结果尚未记录在此。
+该程序不包含任何网络代码（只使用 `tkinter`、`ipaddress`、`csv`、`datetime`、`math`、`sys` 和 `os`，另外用 Pillow 显示窗口图标），其全部源代码都公开在本仓库中。1.1 版可执行文件的 SHA-256 哈希与 1.0 版不同：截至 2026 年 11 月 5 日，VirusTotal 对其报告了 **69 个引擎中的 4 个检出**（Arctic Wolf、Bkav Pro、Microsoft 和 SecureAge），很可能是同类误报。
 
 如需验证您下载的文件：
 

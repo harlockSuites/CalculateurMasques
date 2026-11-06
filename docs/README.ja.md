@@ -133,7 +133,7 @@ CalculateurMasques\
 
 2026年10月25日、VirusTotal はバージョン 1.0 の実行ファイル `CalculateurMasquesIPv4.exe` を **69 エンジン中 5 件**で検出していました：Arctic Wolf、Bkav Pro、Microsoft、SecureAge、Zillya。PyInstaller でパッケージ化された、新しくデジタル署名のない Python プログラムでよくある**誤検知**だと考えています。誤検知の報告は 2026年10月25日に5社すべてへ送信しました。**2026年11月5日時点で、同じファイルを再解析すると検出は一切ありません（70 エンジン中 0 件）。**
 
-このプログラムにはネットワーク関連のコードがなく（使用するのは `tkinter`、`ipaddress`、`csv`、`datetime`、`math`、`sys`、`os` と、ウィンドウアイコン用の Pillow のみ）、ソースコードはすべてこのリポジトリで公開されています。バージョン 1.1 の実行ファイルはバージョン 1.0 とは SHA-256 ハッシュが異なり、その VirusTotal の解析結果はまだここに記録していません。
+このプログラムにはネットワーク関連のコードがなく（使用するのは `tkinter`、`ipaddress`、`csv`、`datetime`、`math`、`sys`、`os` と、ウィンドウアイコン用の Pillow のみ）、ソースコードはすべてこのリポジトリで公開されています。バージョン 1.1 の実行ファイルはバージョン 1.0 とは SHA-256 ハッシュが異なります。2026年11月5日時点で、VirusTotal は **69 エンジン中 4 件**で検出しており（Arctic Wolf、Bkav Pro、Microsoft、SecureAge）、同種の誤検知である可能性が高いと考えています。
 
 ダウンロードしたファイルを確認するには：
 

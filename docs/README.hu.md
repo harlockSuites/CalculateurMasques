@@ -133,7 +133,7 @@ CalculateurMasques\
 
 2026. október 25-én a VirusTotal az 1.0-s verzió `CalculateurMasquesIPv4.exe` futtatható fájlját **69 motorból 5-tel** jelölte meg: Arctic Wolf, Bkav Pro, Microsoft, SecureAge és Zillya. Úgy gondoljuk, hogy **téves riasztások** voltak, amelyek gyakoriak egy új, digitálisan nem aláírt, PyInstallerrel csomagolt Python-programnál. A téves riasztásokról szóló bejelentéseket 2026. október 25-én mind az öt gyártónak elküldtük. **2026. november 5-én ugyanennek a fájlnak az újabb elemzése már egyáltalán nem mutat találatot (70 motorból 0).**
 
-A program nem tartalmaz hálózati kódot (csak a `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` és `os` modulokat használja, valamint a Pillow-t az ablak ikonjához), és a teljes forráskódja nyilvános ebben a tárolóban. Az 1.1-es verzió futtatható fájljának SHA-256 lenyomata eltér az 1.0-s verzióétól: a VirusTotal-elemzését itt még nem rögzítettük.
+A program nem tartalmaz hálózati kódot (csak a `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` és `os` modulokat használja, valamint a Pillow-t az ablak ikonjához), és a teljes forráskódja nyilvános ebben a tárolóban. Az 1.1-es verzió futtatható fájljának SHA-256 lenyomata eltér az 1.0-s verzióétól: 2026. november 5-én a VirusTotal **69 motorból 4-gyel** jelöli meg (Arctic Wolf, Bkav Pro, Microsoft és SecureAge), valószínűleg ugyanilyen jellegű téves riasztásokkal.
 
 Letöltésének ellenőrzéséhez:
 
