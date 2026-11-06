@@ -6,7 +6,7 @@
 
 Репозиторијум: <https://github.com/harlockSuites/CalculateurMasques>
 
-> **Linux:** посебна верзија за Linux налази се у [грани `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Унапред преведена извршна датотека (претходно издање, Debian 12, x86-64) објављена је у [издању `Linux-v1.0`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). Овај README описује верзију за Windows.
+> **Linux:** посебна верзија за Linux налази се у [грани `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Унапред преведени пакети (претходно издање, Debian 12, x86-64): `.deb`, AppImage и самостална извршна датотека, објављени су у [издању `Linux-v1.0.1`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0.1). Овај README описује верзију за Windows.
 
 ---
 

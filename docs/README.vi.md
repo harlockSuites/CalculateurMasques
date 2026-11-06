@@ -6,7 +6,7 @@ Tiện ích đồ họa **ngoại tuyến**, miễn phí và mã nguồn mở, d
 
 Kho mã: <https://github.com/harlockSuites/CalculateurMasques>
 
-> **Linux:** có phiên bản dành riêng cho Linux trên [nhánh `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Tệp thực thi biên dịch sẵn (bản phát hành thử nghiệm, Debian 12, x86-64) được đăng trong [bản phát hành `Linux-v1.0`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). README này mô tả phiên bản Windows.
+> **Linux:** có phiên bản dành riêng cho Linux trên [nhánh `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Các gói biên dịch sẵn (bản phát hành thử nghiệm, Debian 12, x86-64): `.deb`, AppImage và tệp thực thi độc lập, được đăng trong [bản phát hành `Linux-v1.0.1`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0.1). README này mô tả phiên bản Windows.
 
 ---
 

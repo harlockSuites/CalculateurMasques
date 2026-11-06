@@ -6,7 +6,7 @@
 
 リポジトリ：<https://github.com/harlockSuites/CalculateurMasques>
 
-> **Linux:** Linux 専用版は [`Linux` ブランチ](https://github.com/harlockSuites/CalculateurMasques/tree/Linux)で提供しています。ビルド済みの実行ファイル（プレリリース、Debian 12、x86-64）は [`Linux-v1.0` リリース](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0)で公開しています。この README は Windows 版について説明しています。
+> **Linux:** Linux 専用版は [`Linux` ブランチ](https://github.com/harlockSuites/CalculateurMasques/tree/Linux)で提供しています。ビルド済みパッケージ（プレリリース、Debian 12、x86-64）の `.deb`、AppImage、単体実行ファイルは [`Linux-v1.0.1` リリース](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0.1)で公開しています。この README は Windows 版について説明しています。
 
 ---
 

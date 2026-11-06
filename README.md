@@ -6,7 +6,7 @@ Utilitaire graphique **hors-ligne**, gratuit et open-source, pour calculer les m
 
 Dépôt : <https://github.com/harlockSuites/CalculateurMasques>
 
-> **Linux** : une version dédiée existe sur la [branche `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Un exécutable précompilé (préversion, Debian 12, x86-64) est publié dans la [Release `Linux-v1.0`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). Ce README décrit la version Windows.
+> **Linux** : une version dédiée existe sur la [branche `Linux`](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Des paquets précompilés (préversion, Debian 12, x86-64) : `.deb`, AppImage et exécutable autonome, sont publiés dans la [Release `Linux-v1.0.1`](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0.1). Ce README décrit la version Windows.
 
 ---
 

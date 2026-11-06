@@ -6,7 +6,7 @@
 
 Repository: <https://github.com/harlockSuites/CalculateurMasques>
 
-> **Linux:** a dedicated Linux version is available on the [`Linux` branch](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). A prebuilt executable (pre-release, Debian 12, x86-64) is published in the [`Linux-v1.0` release](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). This README describes the Windows version.
+> **Linux:** a dedicated Linux version is available on the [`Linux` branch](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Prebuilt packages (pre-release, Debian 12, x86-64): `.deb`, AppImage and standalone executable, are published in the [`Linux-v1.0.1` release](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0.1). This README describes the Windows version.
 
 ---
 

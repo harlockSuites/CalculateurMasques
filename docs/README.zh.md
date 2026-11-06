@@ -6,7 +6,7 @@
 
 代码仓库：<https://github.com/harlockSuites/CalculateurMasques>
 
-> **Linux：**[`Linux` 分支](https://github.com/harlockSuites/CalculateurMasques/tree/Linux)提供专用的 Linux 版本。预编译的可执行文件（预发布版，Debian 12，x86-64）发布在 [`Linux-v1.0` 发行版](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0)中。本 README 介绍的是 Windows 版本。
+> **Linux：**[`Linux` 分支](https://github.com/harlockSuites/CalculateurMasques/tree/Linux)提供专用的 Linux 版本。预编译包（预发布版，Debian 12，x86-64）：`.deb`、AppImage 和独立可执行文件，发布在 [`Linux-v1.0.1` 发行版](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0.1)中。本 README 介绍的是 Windows 版本。
 
 ---
 

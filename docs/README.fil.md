@@ -6,7 +6,7 @@
 
 Repository: <https://github.com/harlockSuites/CalculateurMasques>
 
-> **Linux:** may hiwalay na bersyon para sa Linux sa [`Linux` branch](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Ang prebuilt na executable (pre-release, Debian 12, x86-64) ay nakapaskil sa [`Linux-v1.0` release](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0). Inilalarawan ng README na ito ang bersyon para sa Windows.
+> **Linux:** may hiwalay na bersyon para sa Linux sa [`Linux` branch](https://github.com/harlockSuites/CalculateurMasques/tree/Linux). Ang mga prebuilt na package (pre-release, Debian 12, x86-64): `.deb`, AppImage at standalone na executable, ay nakapaskil sa [`Linux-v1.0.1` release](https://github.com/harlockSuites/CalculateurMasques/releases/tag/Linux-v1.0.1). Inilalarawan ng README na ito ang bersyon para sa Windows.
 
 ---
 
