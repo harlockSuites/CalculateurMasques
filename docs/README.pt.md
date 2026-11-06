@@ -131,9 +131,9 @@ CalculateurMasques\
 
 ## Antivírus e falsos positivos
 
-Em 25 de outubro de 2026, o VirusTotal sinaliza o executável `CalculateurMasquesIPv4.exe` da versão 1.0 com **5 detecções em 69 mecanismos**: Arctic Wolf, Bkav Pro, Microsoft, SecureAge e Zillya. Acreditamos que sejam **falsos positivos**, comuns em um programa Python empacotado com PyInstaller, recente e sem assinatura digital. O programa não contém nenhum código de rede (usa apenas `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` e `os`, além do Pillow para o ícone da janela) e todo o seu código-fonte é público neste repositório.
+Em 25 de outubro de 2026, o VirusTotal sinalizava o executável `CalculateurMasquesIPv4.exe` da versão 1.0 com **5 detecções em 69 motores**: Arctic Wolf, Bkav Pro, Microsoft, SecureAge e Zillya. Acreditamos que eram **falsos positivos**, comuns em um programa Python recente e sem assinatura digital empacotado com PyInstaller. Relatórios de falsos positivos foram enviados aos cinco fornecedores em 25 de outubro de 2026. **Em 5 de novembro de 2026, uma nova análise do mesmo arquivo não mostra mais nenhuma detecção (0 em 70 motores).**
 
-Relatos de falsos positivos foram enviados em 25 de outubro de 2026 aos cinco fornecedores envolvidos. Esta seção será atualizada com as respostas deles.
+O programa não contém código de rede (usa apenas `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` e `os`, além do Pillow para o ícone da janela) e todo o seu código-fonte é público neste repositório. O executável da versão 1.1 tem um hash SHA-256 diferente do da versão 1.0: a análise dele no VirusTotal ainda não foi registrada aqui.
 
 Para verificar o seu download:
 

@@ -131,9 +131,9 @@ CalculateurMasques\
 
 ## Phần mềm diệt virus và báo động giả
 
-Tính đến ngày 25 tháng 10 năm 2026, VirusTotal gắn cờ tệp thực thi `CalculateurMasquesIPv4.exe` của phiên bản 1.0 với **5 phát hiện trên 69 công cụ quét**: Arctic Wolf, Bkav Pro, Microsoft, SecureAge và Zillya. Chúng tôi cho rằng đây là **báo động giả**, vốn thường gặp với một chương trình Python được đóng gói bằng PyInstaller, còn mới và chưa được ký số. Chương trình không chứa bất kỳ mã mạng nào (chỉ dùng `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` và `os`, cùng với Pillow cho biểu tượng cửa sổ) và toàn bộ mã nguồn được công khai trong kho mã này.
+Vào ngày 25 tháng 10 năm 2026, VirusTotal đã gắn cờ tệp thực thi `CalculateurMasquesIPv4.exe` của phiên bản 1.0 với **5 phát hiện trên 69 công cụ**: Arctic Wolf, Bkav Pro, Microsoft, SecureAge và Zillya. Chúng tôi tin rằng đó là **báo động giả**, thường gặp ở một chương trình Python mới, chưa được ký số và được đóng gói bằng PyInstaller. Các báo cáo báo động giả đã được gửi tới cả năm nhà cung cấp vào ngày 25 tháng 10 năm 2026. **Tính đến ngày 5 tháng 11 năm 2026, lần phân tích lại cùng tệp này không còn hiển thị phát hiện nào (0 trên 70 công cụ).**
 
-Các báo cáo báo động giả đã được gửi vào ngày 25 tháng 10 năm 2026 tới cả năm nhà phát hành liên quan. Phần này sẽ được cập nhật cùng với phản hồi của họ.
+Chương trình không chứa mã mạng (chỉ dùng `tkinter`, `ipaddress`, `csv`, `datetime`, `math`, `sys` và `os`, cùng Pillow cho biểu tượng cửa sổ) và toàn bộ mã nguồn được công khai trong kho lưu trữ này. Tệp thực thi của phiên bản 1.1 có mã băm SHA-256 khác với phiên bản 1.0: kết quả phân tích VirusTotal của nó chưa được ghi lại ở đây.
 
 Để kiểm tra tệp bạn đã tải về:
 
